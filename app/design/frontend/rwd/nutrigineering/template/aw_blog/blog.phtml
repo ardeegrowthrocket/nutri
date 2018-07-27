@@ -1,0 +1,140 @@
+<?php
+/**
+ * aheadWorks Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://ecommerce.aheadworks.com/AW-LICENSE.txt
+ *
+ * =================================================================
+ *                 MAGENTO EDITION USAGE NOTICE
+ * =================================================================
+ * This software is designed to work with Magento community edition and
+ * its use on an edition other than specified is prohibited. aheadWorks does not
+ * provide extension support in case of incorrect edition use.
+ * =================================================================
+ *
+ * @category   AW
+ * @package    AW_Blog
+ * @version    tip
+ * @copyright  Copyright (c) 2010-2012 aheadWorks Co. (http://www.aheadworks.com)
+ * @license    http://ecommerce.aheadworks.com/AW-LICENSE.txt
+ */
+?><?php $posts = $this->getPosts(); ?>
+<div id="messages_product_view">
+	<?php Mage::app()->getLayout()->getMessagesBlock()->setMessages(Mage::getSingleton('customer/session')->getMessages(true)); ?>
+	<?php echo Mage::app()->getLayout()->getMessagesBlock()->getGroupedHtml(); ?>
+</div>
+<div class="blog-top">
+<?php $i = 0; ?>
+<?php foreach ($posts as $post): ?>
+	
+    <?php if($i == 0): ?>
+    	<div class="page-header">
+    		<style type="text/css">
+    			.blog-top{
+    				background-image: url(<?php echo $this->getSkinUrl('images/blog_images/'. $post->getImage() ) ?>);
+    			}
+    		</style>
+			<div class="left-content">	
+				<h2><a href="<?php echo $post->getAddress(); ?>" ><?php echo $post->getTitle(); ?></a></h2>		 
+				 <div class="postContent std"><?php echo $post->getPostContent(); ?></div>
+			</div>
+		</div>
+	<?php endif; ?>
+<?php $i++; ?>
+
+
+
+
+</div>
+
+<?php endforeach; ?>
+
+<?php //echo $this->getChildHtml('aw_blog_comments_toolbar'); ?>
+
+
+
+
+<div class="page-header">
+	<h2 style="font-size: 50px;text-align: center;margin: 40px 0 80px;">Latest On The Blog</h2>
+	<?php $ii = 0; ?>
+<?php foreach ($posts as $post): ?>
+
+	<?php if($ii >= 1): ?>
+	<div class="postWrapper">
+		<div class="postImage">
+			<?php if( $post->getImage() ){ ?>
+				<img src="/skin/frontend/rwd/nutrigineering/images/blog_images/ogimg/<?php echo $post->getIdentifier(); ?>.png" />
+			<?php } ?>
+		</div>
+		<div class="postDetailsContainer">
+			<div class="postTitle">
+				<h2><a href="<?php echo $post->getAddress(); ?>" ><?php echo $post->getTitle(); ?></a></h2>
+				<?php /*<h3><?php echo $post->getCreatedTime(); ?></h3>*/ ?>
+			</div>
+			<div class="postContent std"><?php echo $post->getPostContent(); ?></div>
+
+			<?php /*<?php echo $this->getBookmarkHtml($post) ?>
+			<div class="tags"><?php echo $this->getTagsHtml($post) ?></div>
+			<div class="postDetails">
+				<?php if ($this->getCommentsEnabled()): ?>
+					<?php echo $post->getCommentCount(); ?> <a href="<?php echo $post->getAddress(); ?>#commentBox" > <?php echo Mage::helper('blog')->__('Comments'); ?></a> |
+				<?php endif; ?>
+				<?php $postCats = $post->getCats(); ?>
+				<?php if (!empty($postCats)): ?>
+					<?php echo Mage::helper('blog')->__('Posted in'); ?>
+					<?php foreach ($postCats as $data): ?>
+						<a href="<?php echo $data['url']; ?>"><?php echo $data['title']; ?></a>
+					<?php endforeach; ?>
+				<?php else: ?>
+					<?php echo Mage::helper('blog')->__('Posted'); ?>
+				<?php endif; ?><?php echo $this->__("By"); ?> <?php echo $post->getUser(); ?></div>*/ ?>
+			<div style="clear:both;"></div>
+		</div>
+		<div style="clear:both;"></div>
+	</div>
+
+<?php endif; ?>
+	<?php $ii++;?>
+<?php endforeach; ?>
+</div>
+<?php //echo $this->getChildHtml('aw_blog_comments_toolbar'); ?>
+
+
+<div class="footer-newsletter">
+	<div class="page-header">
+		<h2>sign up to receive our updates</h2>
+		<!-- <p>Nulla ipsum dolor lacus, suscipit adipiscing. Cum sociis natoque penatibus et ultrices volutpat.</p>-->
+		<form action="" method="post" id="newsletter-validate-detail">
+		<div class="block-content">
+			<div class="input-box">
+			   <input type="email" autocapitalize="off" autocorrect="off" spellcheck="false" name="email" id="newsletter" title="Sign up for our newsletter" class="input-text required-entry validate-email" placeholder="Enter your email address">
+			  
+			</div>
+			 <button type="submit" title="Subscribe" class="button">Sign Up</button>
+			
+		</div>
+	</form>
+	</div>
+</div>
+<script type="text/javascript">
+	//<![CDATA[
+		var newsletterSubscriberFormDetail = new VarienForm('newsletter-validate-detail');
+	//]]>
+	</script>
+
+<script type="text/javascript">
+	   jQuery(document).ready(function(){
+   			jQuery('.blog-top').detach().insertAfter('#header');
+   
+   		});
+</script>
+<style type="text/css">
+	.footer-container .small-12:nth-child(2) {
+	    display: none;
+	}
+</style>

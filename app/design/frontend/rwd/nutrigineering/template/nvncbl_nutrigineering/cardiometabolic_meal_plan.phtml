@@ -1,0 +1,57 @@
+<script type="text/javascript" language="javascript">
+	jQuery( document ).ready( function(){
+
+		jQuery('[alt="Select Date"]').css('display','inline');
+
+	<?php
+		if( ( $customer = Mage::getSingleton('customer/session')->getCustomer() ) && $customer->getId() ){
+
+			$gender = $customer->getGender();
+			$age = $customer->getAge();
+			$weight = $customer->getWeight();
+			$height = $customer->getHeight();
+			$activity_level = $customer->getActivityLevel();
+
+			if( $gender == '1' ){
+				$rmr = ( 9.99 * $weight ) + ( 6.25 * $height ) - (4.92 * $age ) + 5;
+			} else if( $gender == '2' ){
+				$rmr = ( 9.99 * $weight ) + ( 6.25 * $height ) - (4.92 * $age ) - 161;
+			}
+
+			$calories = round( $rmr * $activity_level );
+
+			if( $calories <= 1300 ){
+				$tier = 1;
+			} else if( ( $calories > 1300 ) && ( $calories <= 1700 ) ){
+				$tier = 2;
+			} else if( $calories > 1700 ){
+				$tier = 3;
+			}
+
+			if( $calories ){
+	?>
+			jQuery( '<div style="margin-top:0.5em;">(Calorie Requirement: <?php echo $calories; ?>)</div>' ).insertAfter( 'dd[data-option_title="# of Weeks"] select' );
+			//jQuery( 'dd[data-option_title="# of Weeks"] select option' ).not( ':contains(\'Tier <?php echo $tier; ?>\')' ).attr( 'disabled', 'disabled' );
+			jQuery( 'dd[data-option_title="# of Weeks"] select option' ).not( ':contains(\'Tier <?php echo $tier; ?>\')' ).hide();
+
+	<?php
+			} else {
+	?>
+
+		jQuery('#product-options-wrapper').html( 'You do not have age, weight, height, or activity level data saved' );
+		jQuery('.product-options-bottom').hide();
+
+	<?php
+			}
+		} else {
+	?>
+
+		jQuery('#product-options-wrapper').html( 'You must be <a href="#">registered</a> and <a href="#">logged in</a> to select a plan' );
+		jQuery('.product-options-bottom').hide();
+
+	<?php
+		}
+	?>
+
+	} );
+</script>

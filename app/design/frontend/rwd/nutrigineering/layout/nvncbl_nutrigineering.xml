@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+	<default>
+		<reference name="header">
+			<block type="core/template" name="clinic.bar" as="clinic_bar" template="nvncbl_nutrigineering/clinic_bar.phtml"/>
+		</reference>
+	</default>
+</layout>

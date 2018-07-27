@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<Nvncbl_Nutrigineering>
+			<active>true</active>
+			<codePool>local</codePool>
+		</Nvncbl_Nutrigineering>
+	</modules>
+</config>

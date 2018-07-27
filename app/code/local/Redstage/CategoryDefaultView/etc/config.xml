@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+
+<config>
+
+	<modules>
+
+		<Redstage_CategoryDefaultView>
+			<version>0.1.0</version>
+		</Redstage_CategoryDefaultView>
+
+	</modules>
+
+	<global>
+		<blocks>
+			<catalog>
+				<rewrite>
+					<product_list_toolbar>Redstage_CategoryDefaultView_Block_Toolbar</product_list_toolbar>
+				</rewrite>
+			</catalog>
+		</blocks>
+		<models>
+			<categorydefaultview>
+				<class>Redstage_CategoryDefaultView_Model</class>
+			</categorydefaultview>
+		</models>
+		<resources>
+			<categorydefaultview_setup>
+				<setup>
+					<module>Redstage_CategoryDefaultView</module>
+					<class>Redstage_CategoryDefaultView_Model_Resource_Eav_Mysql4_Setup</class>
+				</setup>
+				<connection>
+					<use>core_setup</use>
+				</connection>
+			</categorydefaultview_setup>
+			<categorydefaultview_write>
+				<connection>
+					<use>core_write</use>
+				</connection>
+			</categorydefaultview_write>
+			<categorydefaultview_read>
+				<connection>
+					<use>core_read</use>
+				</connection>
+			</categorydefaultview_read>
+		</resources>
+	</global>
+	 
+</config>

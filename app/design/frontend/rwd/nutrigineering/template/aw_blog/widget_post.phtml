@@ -1,0 +1,54 @@
+<?php
+/**
+ * aheadWorks Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://ecommerce.aheadworks.com/AW-LICENSE.txt
+ *
+ * =================================================================
+ *                 MAGENTO EDITION USAGE NOTICE
+ * =================================================================
+ * This software is designed to work with Magento community edition and
+ * its use on an edition other than specified is prohibited. aheadWorks does not
+ * provide extension support in case of incorrect edition use.
+ * =================================================================
+ *
+ * @category   AW
+ * @package    AW_Blog
+ * @version    tip
+ * @copyright  Copyright (c) 2010-2012 aheadWorks Co. (http://www.aheadworks.com)
+ * @license    http://ecommerce.aheadworks.com/AW-LICENSE.txt
+ */
+?><?php if ($posts = $this->getRecent()): ?>
+<div style="background: #f0f0f0;padding: 90px 0;">
+	
+
+	<div class="widget-latest-content  page-header">
+		 <div class="row">
+		 	<div class="columns small-12 large-12"><?php echo Mage::helper('blog')->__('You May Also Like'); ?></div>
+
+
+		<ul>
+			<?php foreach ($posts as $post): ?>
+				<li class="small-12 large-4 columns">
+					<img src="<?php echo $this->getSkinUrl('images/blog_images/'. $post->getImage() ); ?>" />
+					<span><a href="<?php echo $post->getAddress(); ?>"><?php echo $post->getTitle(); ?></a></span>
+					
+				</li>
+			<?php endforeach; ?>
+		</ul>
+
+
+
+		 </div>
+		
+
+		<div style="clear:both;"></div>
+	</div>
+
+</div>	
+<?php endif; ?>

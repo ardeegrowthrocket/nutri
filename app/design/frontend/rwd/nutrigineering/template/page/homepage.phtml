@@ -1,0 +1,223 @@
+<div class="row">
+	<div class="columns small-12 large-8 large-centered small-centered">
+			<h3>Why choose Nutrigineering?</h3>
+
+			<div class="why-choose-container">
+					<div class="row">
+						<div class="columns small-12 large-3">
+							<div class="wc-image"><img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA);?>home/science.png" /></div>
+						</div>
+						<div class="columns small-12 large-9">
+							<div class="wc-title">Science</div>
+							<div class="wc-text">We have put together and continue to add over 100 peer reviewed / published scientific Journals supporting our products and material.</div>
+						</div>
+					</div>
+
+
+
+			</div>
+
+
+			<div class="why-choose-container">
+					<div class="row">
+						<div class="columns small-12 large-3">
+							<div class="wc-image"><img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA);?>home/expert.png" /></div>
+						</div>
+						<div class="columns small-12 large-9">
+							<div class="wc-title">Well-credentialed Experts</div>
+							<div class="wc-text">The team is led by pioneering Functional Medicine expert Raymond Escalona, MD, MBA, MSNW who has completed over 100 health and wellness talks.</div>
+						</div>
+					</div>
+
+
+			</div>
+
+
+			<div class="why-choose-container">
+					<div class="row">
+						<div class="columns small-12 large-3">
+							<div class="wc-image"><img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA);?>home/empower.png" /></div>
+						</div>
+						<div class="columns small-12 large-9">
+							<div class="wc-title">Commitment to Empowerment</div>
+							<div class="wc-text">We take every client’s health care transformation seriously and provide continuing personalized nutrition education online and in person.</div>
+						</div>
+					</div>
+
+			</div>
+
+
+			<div class="why-choose-container">
+					<div class="row">
+						<div class="columns small-12 large-3">
+							<div class="wc-image"><img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA);?>home/sustain.png" /></div>
+						</div>
+						<div class="columns small-12 large-9">
+							<div class="wc-title">Sustainability</div>
+							<div class="wc-text">We aim for the continuous health transformation of our clients. Programs with 21st century nutrition practices allow for sustainable optimal health.</div>
+						</div>
+					</div>
+
+
+			</div>
+<!--
+			<div class="mission-container">
+
+				<h4>The Nutrigineering Vision and Mission</h4>
+
+				<p>To see a Philippines that uses Food as the primary therapy for the prevention and management of Chronic disease.</p>
+				<p>To be the leading science-based whole food nutrition and wellness company able to provide unparalleled quality, innovation, inclusiveness and community.</p>
+				<p>For more inquiries please contact our team at <a href="mailto:support@nutrigineering.com">support@nutrigineering.com</a></p>
+
+			</div>	 -->
+	</div>
+
+</div>
+
+
+<div id="home-detach">
+
+		<?php
+			$collection = Mage::getModel('blog/blog')->getCollection()
+				->addPresentFilter()
+				->addEnableFilter(AW_Blog_Model_Status::STATUS_ENABLED)
+				->addStoreFilter()
+				->joinComments()
+			;
+			$post = $collection->getLastItem();
+		?>
+
+		<div class="apple bg-home-custom">
+			<div class="page-header">
+				<div class="row">
+					<div class="columns large-8 small-12">
+						<div class="blog-content-container">
+							<a href="<?php echo Mage::getUrl() .'blog/'. $post->getIdentifier(); ?>"><?php echo $post->getTitle(); ?></a><br />
+							<?php echo substr( $post->getShortContent(), 0, 500 ); ?> ...
+							<br>
+							<a href="<?php echo Mage::getUrl() .'blog/'. $post->getIdentifier(); ?>" class="button button-black">Read More</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<?php /*<div class="apple bg-home-custom">
+			<div class="page-header">
+				<div class="row">
+					<div class="columns large-8 small-12">
+						<p>
+							<!--
+							“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate.”<br><br>
+							—<span class="italic-p"> Lorem Ipsum</span><br/> -->
+							<a href="/blog/food-the-future-of-medicine/" >FOOD IS MEDICINE </a><br>
+Hello all! My name is Raymond Escalona, my friends know me as Dr. E and I’m one of the first certified Functional Medicine doctors in the Philippines! Through a series of blog posts, I hope to share with you not only the things I’ve learned studying abroad, but also my personal anecdotes and insights into the world of Functional Medicine, which I believe is the best path to an optimal state of health.
+<br>
+							<a href="/blog/food-the-future-of-medicine/" class="button button-black">Read More</a>
+						</p>
+
+					</div>
+				</div>
+			</div>
+		</div>*/ ?>
+<!--
+		<div class="lemon bg-home-custom">
+			<div class="page-header">
+				<div class="row">
+					<div class="columns large-8 small-12" style="float: right;">
+						<p>
+							“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate.”<br>
+							—<span class="italic-p"> Lorem Ipsum</span><br/>
+							<a href="#" class="button button-black">Read More</a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="grapes bg-home-custom">
+			<div class="page-header">
+				<div class="row">
+					<div class="columns large-8 small-12">
+						<p>
+							“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate.”<br><br>
+							—<span class="italic-p"> Lorem Ipsum</span><br/>
+							<a href="#" class="button button-black">Read More</a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	-->
+
+<div class="home-contact">
+<div class="row">
+	<div class="columns small-12 large-7 large-centered small-centered">
+		<div class="row">
+			<div class="columns small-12 large-12">
+			<h2 class="legend">
+			 Consult with Us
+			 </h2>
+		<p>Reach out to us and discover how best to transition yourself to a state of optimal health!</p>
+			</div>
+		</div>
+
+ <form method="post" id="custom_form" action="https://www.nutrigineering.com/formbuilder/index/formsubmit/" name="custom_form" enctype="multipart/form-data">
+	  <div class="row">
+
+		<div class="columns small-12 large-6">
+
+			<div class="field name-lastname">
+
+				<div class="input-box">
+					<input type="text" class="input-text required-entry  product-custom-option" title="Name" id="options_9_text" name="options[9]" value="" placeholder="Name">
+				</div>
+			</div>
+
+		</div>
+
+		<div class="columns small-12 large-6">
+			<input type="text" class="input-text required-entry  product-custom-option validate-email" title="Email" id="options_8_text" name="options[8]" value="" placeholder="Email">
+		</div>
+		<div class="columns small-12 large-12">
+			 <input type="text" class="input-text required-entry product-custom-option" title="Subject" id="options_7_text" name="options[7]" value="" placeholder="Subject">
+		</div>
+		<div class="columns small-12 large-12">
+			 <textarea rows="5" cols="25" class="input-text required-entry  product-custom-option" title="Message" id="options_6_text" name="options[6]" placeholder="Message"></textarea>
+		</div>
+		<div class="columns small-12 large-12">
+			<input type="hidden" name="current_form_id" id="current_form_id" value="2">
+			<a href="#" class="button button-black trigger-sub">Send</a>
+			<button class="button validation-passed button-black trigger-sub" title="Submit" type="submit" style="display: none;"><span><span>Send</span></span></button>
+		</div>
+
+	  </div>
+</form>
+	</div>
+</div>
+
+</div>
+
+</div>
+
+<style type="text/css">
+	input[type=email], input[type=search], input[type=number], input[type=password], input[type=tel], input[type=text]{
+		width: 100% !Important;
+	}
+	textarea{
+		max-width: 100% !Important;
+	}
+</style>
+<script type="text/javascript">
+	jQuery(document).ready(function(){
+		jQuery('#home-detach').detach().insertAfter('.main-container');
+		jQuery('a.trigger-sub').click(function(){
+			jQuery('button.trigger-sub').trigger( "click" );
+		});
+	});
+</script>
+<script type="text/javascript">
+	//< ![CDATA[
+		var customForm = new VarienForm('custom_form');
+	//]]>
+</script>

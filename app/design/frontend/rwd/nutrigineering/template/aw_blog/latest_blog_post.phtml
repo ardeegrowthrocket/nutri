@@ -1,0 +1,53 @@
+
+
+<?php $posts = $this->getPosts(); ?>
+
+<?php foreach ($posts as $post): ?>
+
+	<div class="apple bg-home-custom">
+		<div class="page-header">
+			<div class="row">
+				<div class="columns large-8 small-12">
+					<p>
+						<!--
+						“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate.”<br><br>
+						—<span class="italic-p"> Lorem Ipsum</span><br/> -->
+						<a href="<?php echo $post->getAddress(); ?>" ><?php echo $post->getTitle(); ?></a><br />
+						<?php echo $post->getPostContent(); ?>
+						<br>
+						<a href="<?php echo $post->getAddress(); ?>" class="button button-black">Read More</a>
+					</p>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<?php break; ?>
+
+	<?php /*
+	<div class="postWrapper">
+		<div class="postTitle">
+			<h2><a href="<?php echo $post->getAddress(); ?>" ><?php echo $post->getTitle(); ?></a></h2>
+			<h3><?php echo $post->getCreatedTime(); ?></h3>
+		</div>
+		<div class="postContent std"><?php echo $post->getPostContent(); ?></div>
+
+		<?php echo $this->getBookmarkHtml($post) ?>
+		<div class="tags"><?php echo $this->getTagsHtml($post) ?></div>
+		<div class="postDetails">
+			<?php if ($this->getCommentsEnabled()): ?>
+				<?php echo $post->getCommentCount(); ?> <a href="<?php echo $post->getAddress(); ?>#commentBox" > <?php echo Mage::helper('blog')->__('Comments'); ?></a> |
+			<?php endif; ?>
+			<?php $postCats = $post->getCats(); ?>
+			<?php if (!empty($postCats)): ?>
+				<?php echo Mage::helper('blog')->__('Posted in'); ?>
+				<?php foreach ($postCats as $data): ?>
+					<a href="<?php echo $data['url']; ?>"><?php echo $data['title']; ?></a>
+				<?php endforeach; ?>
+			<?php else: ?>
+				<?php echo Mage::helper('blog')->__('Posted'); ?>
+			<?php endif; ?><?php echo $this->__("By"); ?> <?php echo $post->getUser(); ?></div>
+	</div>*/ ?>
+
+<?php endforeach; ?>
