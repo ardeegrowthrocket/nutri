@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+  <pdfmaster_adminhtml_pdflist_index>
+	<reference name="content">
+	  <block type="pdfmaster/adminhtml_pdflist" name="pdflist" />
+	</reference>
+  </pdfmaster_adminhtml_pdflist_index>
+  <pdfmaster_adminhtml_clinicalcustomer_index>
+	<reference name="content">
+	  <block type="pdfmaster/adminhtml_clinicalcustomer" name="clinicalcustomer" />
+	</reference>
+  </pdfmaster_adminhtml_clinicalcustomer_index>
+</layout>
