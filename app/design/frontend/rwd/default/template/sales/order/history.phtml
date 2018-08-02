@@ -24,7 +24,12 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
-
+<?php
+$orderCollection = Mage::getModel('sales/order')->getCollection();
+$orders = $orderCollection->addAttributeToFilter("customer_id", Mage::getSingleton("customer/session")->getCustomer()->getId())
+->addAttributeToFilter('status', 'complete');
+if($orders->count()!=0){
+?>
 <div class="page-title">
     <h1><?php echo $this->__('My Flipbooks') ?></h1>
 </div>
@@ -41,7 +46,9 @@
 </ul>
 <hr/>
 <br><br><br>
-
+<?php
+}
+?>
 
 
 

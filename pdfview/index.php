@@ -10,7 +10,16 @@ if($session->isLoggedIn())
 	$customer = Mage::getModel('customer/customer')->load($session->getCustomer()->getId());
 	$flipbook = Mage::getModel('pdfmaster/pdflist')->load($_GET['id']);
 	if($flipbook->getId()){
-		$basepdf = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).$flipbook->getPdfFile();
+		
+		$orderCollection = Mage::getModel('sales/order')->getCollection();
+		$orders = $orderCollection->addAttributeToFilter("customer_id", Mage::getSingleton("customer/session")->getCustomer()->getId())
+		->addAttributeToFilter('status', 'complete');
+
+		if($orders->count()==0){
+			exit('Your not allowed to this page.');
+		}	
+			
+		$basepdf = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).($flipbook->getPdfFile());
 	}else{
 		exit('PDF is missing kindly contact administrator.');
 	}
@@ -437,7 +446,7 @@ if($session->isLoggedIn())
 <script src="pdfjs/debugger.js"></script>
 <script src="pdfjs/viewer.js"></script>
 <script>
-	var DEFAULT_URL =  "<?php echo $basepdf; ?>";
+	var DEFAULT_URL =  "<?php echo ($basepdf); ?>";
 </script>
 <script src="pdf-flip.js?v=1.1.1.1.1.1"></script>
 <script type="text/javascript">

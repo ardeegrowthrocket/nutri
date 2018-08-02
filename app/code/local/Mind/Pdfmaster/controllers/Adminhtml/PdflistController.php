@@ -113,13 +113,14 @@ else {
 						$path = Mage::getBaseDir('media') . DS . 'pdfmaster' . DS .'pdflist'.DS;
 						$uploader = new Varien_File_Uploader('pdf_file');
 						$uploader->setAllowedExtensions(array('pdf'));
-						$uploader->setAllowRenameFiles(false);
+						$uploader->setAllowRenameFiles(true);
 						$uploader->setFilesDispersion(false);
 						$destFile = $path.$_FILES['pdf_file']['name'];
 						$filename = $uploader->getNewFileName($destFile);
-						$uploader->save($path, $filename);
+						$newname = strtotime("now")."-".rand().".pdf";
+						$uploader->save($path,$newname);
 
-						$post_data['pdf_file']='pdfmaster/pdflist/'.$filename;
+						$post_data['pdf_file']='pdfmaster/pdflist/'.$newname;
 		}
     }
 }
