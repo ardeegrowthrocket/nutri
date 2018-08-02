@@ -35,7 +35,7 @@ if($orders->count()!=0){
 </div>
 <ul>
 <?php
- $flipbook = Mage::getModel('pdfmaster/pdflist')->getCollection();
+ $flipbook = Mage::getModel('pdfmaster/pdflist')->getCollection()->setOrder('position','ASC');
 	foreach($flipbook as $fb){
 
 		?>
