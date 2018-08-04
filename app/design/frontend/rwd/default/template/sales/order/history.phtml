@@ -34,24 +34,37 @@ if($orders->count()!=0){
     <h1><?php echo $this->__('My Flipbooks') ?></h1>
 </div>
 <ul>
+
+<table class="data-table orders" id="my-orders-table">
+    <col width="1" />
+    <col width="1" />
+    <col />
+    <col width="1" />
+    <col width="1" />
+    <col width="1" />
+    <thead>
+        <tr>
+            <th class="number"><?php echo $this->__('PDF List') ?></th>
+        </tr>
+    </thead>
+    <tbody>
 <?php
  $flipbook = Mage::getModel('pdfmaster/pdflist')->getCollection()->setOrder('position','ASC');
-	foreach($flipbook as $fb){
+    foreach($flipbook as $fb){
 
-		?>
-			<li><a href='<?php echo Mage::getBaseUrl()."pdfview?id=".$fb->getId(); ?>'><?php echo $fb->getTitle(); ?></a></li>
-		<?php
-	}
+        ?>
+            <tr>
+                <td><a target='newtab' href='<?php echo Mage::getBaseUrl()."pdfview?id=".$fb->getId(); ?>'><?php echo $fb->getTitle(); ?></a></td>
+            </tr>
+        <?php
+    }
 ?>
-</ul>
-<hr/>
+    </tbody>
+</table>
 <br><br><br>
 <?php
 }
 ?>
-
-
-
 
 
 
