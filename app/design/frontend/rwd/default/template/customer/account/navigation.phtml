@@ -31,6 +31,13 @@
     <div class="block-content">
         <ul>
             <?php $_links = $this->getLinks(); ?>
+
+            <?php
+               if(Mage::getSingleton("customer/session")->getCustomer()->getIsClinic()!=1){
+                   unset($_links['clinical_edit']);
+               }
+               
+            ?>
             <?php $_index = 1; ?>
             <?php $_count = count($_links); ?>
             <?php foreach ($_links as $_link): ?>

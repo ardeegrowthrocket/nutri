@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Mind_Account>
+      <version>0.1.0</version>
+    </Mind_Account>
+  </modules>
+  <frontend>
+    <routers>
+      <account>
+        <use>standard</use>
+          <args>
+            <module>Mind_Account</module>
+            <frontName>account</frontName>
+          </args>
+      </account>
+    </routers>
+  </frontend>
+  <global>
+		<rewrite>        
+            <mind_account_customer_accountcontroller>
+                <from><![CDATA[#^/customer/account/#]]></from> <!-- Mage_Customer_AccountController  -->
+                <to>/account/customer_account/</to> <!-- Mind_Account_Customer_AccountController  -->
+            </mind_account_customer_accountcontroller>
+		</rewrite>
+    <helpers>
+      <account>
+        <class>Mind_Account_Helper</class>
+      </account>
+    </helpers>
+  </global>
+  <admin>
+	<routers>
+	  <account>
+	    <use>admin</use>
+		<args>
+		  <module>Mind_Account</module>
+		  <frontName>admin_account</frontName>
+		</args>
+	  </account>
+	</routers>
+  </admin>
+</config> 

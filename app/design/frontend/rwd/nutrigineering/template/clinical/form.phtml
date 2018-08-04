@@ -1,0 +1,88 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     rwd_default
+ * @copyright   Copyright (c) 2006-2017 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+
+if($_GET['id']){
+	$data = Mage::getModel('pdfmaster/clinicalcustomer')->load($_GET['id'])->getData();
+}
+?>
+<div class="block block-subscribe">
+<form action='<?php echo Mage::getUrl('customer/account/clinicalsave'); ?>' method="post" autocomplete="off" id="form-validate" class="scaffold-form" enctype="multipart/form-data">
+<div class="fieldset">
+        <input name="form_key" type="hidden" value="<?php echo Mage::getSingleton('core/session')->getFormKey() ?>">
+        <input name="clinic" type="hidden" value="<?php echo Mage::getSingleton("customer/session")->getCustomer()->getId(); ?>">
+		<input name="id" type="hidden" value="<?php echo $data['id']; ?>">
+        <h2 class="legend">Customer Information</h2>
+        <p class="required">* Required Fields</p>
+        <ul class="form-list">
+            <li class="fields">
+<div class="customer-name-middlename">
+    <div class="field name-firstname">
+        <label for="firstname" class="required"><em>*</em>First Name</label>
+        <div class="input-box">
+            <input type="text" id="firstname" name="firstname" value="<?php echo $data['firstname']; ?>" title="First Name" maxlength="255" class="input-text required-entry">
+        </div>
+    </div>
+    <div class="field name-middlename">
+        <label for="middlename">Middle Name/Initial</label>
+        <div class="input-box">
+            <input type="text" id="middlename" name="middlename" value="<?php echo $data['middlename']; ?>" title="Middle Name/Initial" class="input-text ">
+        </div>
+    </div>
+    <div class="field name-lastname">
+        <label for="lastname" class="required"><em>*</em>Last Name</label>
+        <div class="input-box">
+            <input type="text" id="lastname" name="lastname" value="<?php echo $data['lastname']; ?>" title="Last Name" maxlength="255" class="input-text required-entry">
+        </div>
+    </div>
+    <div class="field name-lastname">
+        <label for="lastname" class="required"><em>*</em>Telephone</label>
+        <div class="input-box">
+            <input type="text" id="telephone" name="telephone" value="<?php echo $data['telephone']; ?>" title="Telephone" maxlength="255" class="input-text required-entry">
+        </div>
+    </div>
+     <div class="field name-lastname">
+        <label for="lastname" class="required"><em>*</em>Address</label>
+        <div class="input-box">
+            <input type="text" id="address" name="address" value="<?php echo $data['address']; ?>" title="Address" maxlength="255" class="input-text required-entry">
+        </div>
+    </div>   
+
+</div>
+            </li>
+        </ul>
+</div>
+<div class="buttons-set">
+        <button type="submit" title="Save" class="button"><span><span>Save</span></span></button>
+</div>
+
+
+</div>
+</form>
+<script type="text/javascript">
+//<![CDATA[
+    var dataForm = new VarienForm('form-validate', true);
+//]]>
+</script>
