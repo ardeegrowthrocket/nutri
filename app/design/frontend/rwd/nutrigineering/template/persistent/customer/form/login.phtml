@@ -59,29 +59,35 @@
 							<li>
 								
 								<div class="input-box">
+									<label>User name or email</label>
 									<input type="email" autocapitalize="off" autocorrect="off" spellcheck="false" name="login[username]" value="<?php echo $this->escapeHtml($this->getUsername()) ?>" id="email" class="input-text required-entry validate-email" title="<?php echo $this->quoteEscape($this->__('Email Address')) ?>" placeholder="Email"/>
 								</div>
 							</li>
 							<li>
 								
 								<div class="input-box">
+									<label>Password</label>
 									<input type="password" name="login[password]" class="input-text required-entry validate-password" id="pass" title="<?php echo $this->quoteEscape($this->__('Password')) ?>" placeholder="password"/>
 								</div>
 							</li>
+							<li><a href="#" class="button button-black sign-in">Log In</a></li>
 							<?php echo $this->getChildHtml('form.additional.info'); ?>
 							
-							<?php echo $this->getChildHtml('persistent.remember.me'); ?>
+							
 						</ul>
 						<?php echo $this->getChildHtml('persistent.remember.me.tooltip'); ?>
+
+
+
 					</div>
+
 					<div class="buttons-set" style="display: none;">
 
 						<button type="submit" class="button sign-in" title="<?php echo $this->quoteEscape($this->__('Login')) ?>" name="send" id="send2"><span><span><?php echo $this->__('Login') ?></span></span></button>
 					</div>
-					<a href="#" class="button button-black sign-in inverted">Sign In</a>
-					<span style="float: right;">
+					<?php echo $this->getChildHtml('persistent.remember.me'); ?>
+					<span style="float: right;margin-top: -37px;" class="span-log">	
 					<a href="<?php echo $this->getForgotPasswordUrl() ?>" class="f-left"><?php echo $this->__('Forgot Your Password?') ?></a>
-					<i class="fa fa-long-arrow-alt-right"></i>
 					</span>
 
 				<?php } ?>
@@ -89,44 +95,7 @@
 			</div>
 			<?php endif; ?>
 			<?php // This column should be col-1 if the registration column is not displayed ?>
-			<div class="<?php if ($this->helper('customer')->isRegistrationAllowed()): ?>col-2<?php else: ?>col-1<?php endif; ?> registered-users">
-
-				<?php if( ( $clinic_id = Mage::getSingleton('customer/session')->getClinicId() ) == true ){ ?>
-
-					<div class="content fieldset">
-						<h2><?php echo $this->__('Choose Existing Patient') ?></h2>
-						<ul class="form-list">
-						<?php
-							$clinic = Mage::getModel('customer/customer')->load( $clinic_id );
-							$clinic_customers = Mage::getResourceModel('customer/customer_collection')
-								->addFieldToFilter( 'clinic_id', $clinic->getId() );
-							foreach( $clinic_customers as $clinic_customer ){ $clinic_customer->load(); ?>
-							<li>
-								<a class="button" href="<?php echo Mage::getUrl(); ?>nutrigineering/index/loginAs/?customer_id=<?php echo $clinic_customer->getId(); ?>"><?php echo $clinic_customer->getName(); ?></a>
-							</li>
-						<?php } ?>
-						</ul>
-					</div>
-
-				<?php } else { ?>
-
-				<div class="content">
-						<h2><?php echo $this->__('REGISTER') ?></h2>
-						<p class="form-instructions"><?php echo $this->__('Registration is free and easy!') ?></p>
-						<ul class="benefits">
-							<li><?php echo $this->__('Faster checkout') ?></li>
-							<li><?php echo $this->__('Save multiple shipping addresses') ?></li>
-							<li><?php echo $this->__('View and track orders and more') ?></li>
-						</ul>
-					</div>
-					
-					<a title="<?php echo $this->quoteEscape($this->__('Create Account')) ?>" class="button button-black sign-in inverted" href="<?php echo Mage::helper('persistent')->getCreateAccountUrl($this->getCreateAccountUrl()) ?>"><span><span><?php echo $this->__('Create an Account') ?></span></span></a>
-
-
-
-				<?php } ?>
-
-			</div>
+			
 		</div>
 		<?php if (Mage::helper('checkout')->isContextCheckout()): ?>
 			<input name="context" type="hidden" value="checkout" />
