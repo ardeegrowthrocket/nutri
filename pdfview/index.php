@@ -2,12 +2,17 @@
 require_once ( "../app/Mage.php" );
 Mage::app();
 
-Mage::getSingleton("core/session", array("name" => "frontend"));
-$session = Mage::getSingleton("customer/session");
+if(empty($_COOKIE['customerid'])){
+    exit('Your not allowed to this page. - Please login.');
+}
 
-if($session->isLoggedIn())
+$orderCollection = Mage::getModel('sales/order')->getCollection();
+$orders = $orderCollection->addAttributeToFilter("customer_id",$_COOKIE['customerid'])
+->addAttributeToFilter('status', 'complete');
+
+if($orders->count()!=0)
 {
-	$customer = Mage::getModel('customer/customer')->load($session->getCustomer()->getId());
+	$customer = Mage::getModel('customer/customer')->load($_COOKIE['customerid']);
 	$flipbook = Mage::getModel('pdfmaster/pdflist')->load($_GET['id']);
 	if($flipbook->getId()){
 		
@@ -16,7 +21,7 @@ if($session->isLoggedIn())
 		->addAttributeToFilter('status', 'complete');
 
 		if($orders->count()==0){
-			exit('Your not allowed to this page.');
+			exit('Your not allowed to this page. Please purchase a product to view this page.');
 		}	
 			
 		$basepdf = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).($flipbook->getPdfFile());
@@ -454,9 +459,6 @@ if($session->isLoggedIn())
         PdfFlip.init();
 		
     });
-	jQuery(body).ready(function () {
-		$("#magazine").turn('page', 1);
-	});
 </script>
 
 </body>
