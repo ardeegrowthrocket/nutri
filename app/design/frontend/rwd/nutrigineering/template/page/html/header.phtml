@@ -53,8 +53,19 @@
 		</span>
 		<?php echo $this->getChildHtml('minicart_head'); ?>
 		<ul>
+
+
+<?php if (!Mage::getSingleton('customer/session')->isLoggedIn()): ?>
+
 			<li><a href="<?php echo Mage::getUrl('customer/account/create'); ?>">Register</a></li>
-			<li><a href="<?php echo Mage::getUrl('customer/account/login'); ?>">Sign In</a></li>
+			<li>
+ 				<a href="<?php echo Mage::helper('customer')->getLoginUrl(); ?>"><?php echo $this->__('Sign In') ?></a>
+			</li>
+   
+<?php else: ?>
+   <li> <a href="<?php echo Mage::helper('customer')->getLogoutUrl(); ?>"><?php echo $this->__('Logout') ?></a></li>
+<?php endif; ?>
+
 			
 		</ul>
 		
