@@ -17,7 +17,7 @@ if($orders->count()!=0)
 	if($flipbook->getId()){
 		
 		$orderCollection = Mage::getModel('sales/order')->getCollection();
-		$orders = $orderCollection->addAttributeToFilter("customer_id", Mage::getSingleton("customer/session")->getCustomer()->getId())
+		$orders = $orderCollection->addAttributeToFilter("customer_id",$_COOKIE['customerid'])
 		->addAttributeToFilter('status', 'complete');
 
 		if($orders->count()==0){
