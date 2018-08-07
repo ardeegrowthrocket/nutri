@@ -46,10 +46,12 @@ class Mind_Account_Customer_AccountController extends Mage_Customer_AccountContr
 
     public function Clinicalsaveaction(){
     	if(empty($_POST['id'])){
+            unset($_POST['id']);
     		$data = Mage::getModel('pdfmaster/clinicalcustomer')->setData($_POST)->save(); 
     	}else{
     		$data = Mage::getModel('pdfmaster/clinicalcustomer')->load($_POST['id'])->setData($_POST)->save();
     	}
+
     	$session = $this->_getSession();
     	Mage::getSingleton('core/session')->addSuccess("Customer is successfully saved."); 
     	$this->_redirect('customer/account/clinical/'); // NVNCBL CUSTOM
