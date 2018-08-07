@@ -229,6 +229,9 @@
                 <items_qty>
                     <to_order>total_qty_ordered</to_order>
                 </items_qty>
+                <clinical_customer>
+                    <to_order>clinical_customer</to_order>
+                </clinical_customer>                
             </sales_convert_quote>
             <sales_convert_quote_address>
                 <weight>

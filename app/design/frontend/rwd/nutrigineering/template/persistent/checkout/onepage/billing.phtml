@@ -24,10 +24,40 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 /** @var Mage_Checkout_Block_Onepage_Billing $this */
+
 ?>
 <form id="co-billing-form" action="">
 <fieldset>
 	<ul class="form-list">
+<?php
+	$orderCollection = Mage::getModel('pdfmaster/clinicalcustomer')->getCollection();
+	$orders = $orderCollection->addFieldToFilter("clinic", Mage::getSingleton("customer/session")->getCustomer()->getId());
+	if($orders->count()!=0){
+?>
+	<li class='wide'>
+		<label>Select a patient for this order:</label>
+		<div class='input-box'>
+			<select name='patient'>
+				<option value=''>Select a patient</option>
+				<?php
+					foreach($orders as $c){
+						$fullname = '';
+						if($c->getMiddlename()){
+							$fullname = $c->getFirstname()." ".$c->getMiddlename()." ".$c->getLastname();
+						}else{
+							$fullname = $c->getFirstname()." ".$c->getLastname();
+						}
+						echo "<option value='{$c->getId()}'>$fullname</option>";
+					}
+				?>
+				
+			</select>
+		</div>
+	</li>
+<?php
+}
+?>
+
 	<?php if ($this->customerHasAddresses()): ?>
 		<li class="wide">
 			<label for="billing-address-select"><?php echo $this->__('Select from your address book or enter a new address.') ?></label>
@@ -36,6 +66,11 @@
 			</div>
 		</li>
 	<?php endif; ?>
+
+
+
+
+
 	<li id="billing-new-address-form"<?php if ($this->customerHasAddresses()): ?> style="display:none;"<?php endif; ?>>
 		<fieldset>
 			<input type="hidden" name="billing[address_id]" value="<?php echo $this->getAddress()->getId() ?>" id="billing:address_id" />

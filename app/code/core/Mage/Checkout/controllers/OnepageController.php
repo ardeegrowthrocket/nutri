@@ -362,6 +362,7 @@ class Mage_Checkout_OnepageController extends Mage_Checkout_Controller_Action
      */
     public function saveBillingAction()
     {
+
         if ($this->_expireAjax()) {
             return;
         }
@@ -369,6 +370,10 @@ class Mage_Checkout_OnepageController extends Mage_Checkout_Controller_Action
         if ($this->isFormkeyValidationOnCheckoutEnabled() && !$this->_validateFormKey()) {
             return;
         }
+
+        //MIND CUSTOM
+        Mage::getSingleton('checkout/session')->getQuote()->setClinicalCustomer($_REQUEST['patient']);
+        //
 
         if ($this->getRequest()->isPost()) {
             $data = $this->getRequest()->getPost('billing', array());

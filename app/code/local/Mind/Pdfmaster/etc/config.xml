@@ -108,14 +108,28 @@
 
 	  <customer_logout> <!-- identifier of the event we want to catch -->
         <observers>
-          <pdfmaster_event> <!-- identifier of the event handler -->
+          <pdfmaster_event2> <!-- identifier of the event handler -->
             <type>model</type> <!-- class method call type; valid are model, object and singleton -->
             <class>pdfmaster/observer</class> <!-- observers class alias -->
             <method>Setcookie2</method>  <!-- observer's method to be called -->
             <args></args> <!-- additional arguments passed to observer -->
-          </pdfmaster_event>
+          </pdfmaster_event2>
         </observers>
       </customer_logout>
+
+
+	  <sales_order_save_after> <!-- identifier of the event we want to catch -->
+        <observers>
+          <sales_order_save_after_pdf> <!-- identifier of the event handler -->
+            <type>model</type> <!-- class method call type; valid are model, object and singleton -->
+            <class>pdfmaster/observer</class> <!-- observers class alias -->
+            <method>saveAfter</method>  <!-- observer's method to be called -->
+            <args></args> <!-- additional arguments passed to observer -->
+          </sales_order_save_after_pdf>
+        </observers>
+      </sales_order_save_after>
+
+
 
     </events>
 
