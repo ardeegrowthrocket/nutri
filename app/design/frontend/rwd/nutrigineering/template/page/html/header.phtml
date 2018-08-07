@@ -63,7 +63,8 @@
 			</li>
    
 <?php else: ?>
-   <li> <a href="<?php echo Mage::helper('customer')->getLogoutUrl(); ?>"><?php echo $this->__('Logout') ?></a></li>
+	<li><a href="<?php echo Mage::getUrl('customer/account'); ?>">My Account</a></li>
+    <li> <a href="<?php echo Mage::helper('customer')->getLogoutUrl(); ?>"><?php echo $this->__('Logout') ?></a></li>
 <?php endif; ?>
 
 			
