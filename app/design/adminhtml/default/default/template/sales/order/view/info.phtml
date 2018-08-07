@@ -99,6 +99,33 @@ $orderStoreDate = $this->formatDate($_order->getCreatedAtStoreDate(), 'medium', 
                 <td class="value"><strong><?php echo $_order->getBaseToOrderRate() ?></strong></td>
             </tr>
             <?php endif; ?>
+
+            <?php
+                if($_order->getClinicalCustomer()){
+
+                        $orderCollection = Mage::getModel('pdfmaster/clinicalcustomer')->getCollection();
+                        $c = $orderCollection->addFieldToFilter("id",$_order->getClinicalCustomer())->getFirstItem();
+
+                        $fullname = '';
+                        if($c->getMiddlename()){
+                            $fullname = $c->getFirstname()." ".$c->getMiddlename()." ".$c->getLastname();
+                        }else{
+                            $fullname = $c->getFirstname()." ".$c->getLastname();
+                        }  
+
+                    ?>
+                        <tr>
+                            <td class="label"><label>Patient</label></td>
+                            <td class="value"><strong><?php echo $fullname; ?></strong></td>
+                        </tr>
+                    <?php
+                }
+            ?>
+
+
+
+
+
             </table>
         </div>
     </div>

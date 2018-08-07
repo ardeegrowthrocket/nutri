@@ -33,3 +33,51 @@
     </div>
     <script type="text/javascript">order.accountFieldsBind($('customer_account_fieds'))</script>
 </div>
+<?php
+$customer = Mage::getSingleton('adminhtml/session_quote')->getCustomer();
+?>
+<?php
+	$orderCollection = Mage::getModel('pdfmaster/clinicalcustomer')->getCollection();
+	$orders = $orderCollection->addFieldToFilter("clinic", $customer->getId());
+	if($orders->count()!=0){
+?>
+<div class="entry-edit">
+    <div class="entry-edit-head">
+        <h4 class="icon-head fieldset-legend <?php echo $this->getHeaderCssClass() ?>">Select patient:</h4>
+    </div>
+    <div id="clinicalcustomer">
+   
+		<div class="fieldset " id="main">
+		   <div class="hor-scroll">
+		      <table cellspacing="0" class="form-list">
+		         <tbody>
+		            <tr>
+		               <td class="label"><label for="group_id">Patient <span class="required">*</span></label></td>
+		               <td class="value">
+							<select name='patient'>
+								<option value=''>Select a patient</option>
+								<?php
+									foreach($orders as $c){
+										$fullname = '';
+										if($c->getMiddlename()){
+											$fullname = $c->getFirstname()." ".$c->getMiddlename()." ".$c->getLastname();
+										}else{
+											$fullname = $c->getFirstname()." ".$c->getLastname();
+										}
+										echo "<option value='{$c->getId()}'>$fullname</option>";
+									}
+								?>
+								
+							</select> 
+		               </td>
+		            </tr>
+		         </tbody>
+		      </table>
+		   </div>
+		</div>
+
+    </div>
+</div>
+<?php
+}
+?>

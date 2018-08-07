@@ -22,9 +22,7 @@ class Mind_Pdfmaster_Model_Observer
 				$order = $observer->getEvent()->getOrder();
 
 				if($_REQUEST['patient']){
-					$ordertosave = Mage::getModel('sales/order')->load($order->getId());
-					$ordertosave->setClinicalCustomer($_REQUEST['patient']);
-					$ordertosave->save();
+					$order->setClinicalCustomer($_REQUEST['patient']);
 				}
 
 			}			

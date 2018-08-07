@@ -17,6 +17,13 @@ class Luemic_PurchaseOrder_Model_Method_Purchaseorder extends Mage_Payment_Model
             }
 
         }
+
+        if(Mage::getSingleton('adminhtml/session_quote')->getCustomer()){
+            if(Mage::getSingleton('adminhtml/session_quote')->getCustomer()->getIsClinic()==1){
+                return true;
+            }
+        }
+
         if(Mage::getSingleton('customer/session')->isLoggedIn()){
         	$customer_data=Mage::getSingleton('customer/session')->getCustomer();
         	if($customer_data->getIsClinic()==1){
