@@ -54,7 +54,7 @@ if($orders->count()!=0){
 
         ?>
             <tr>
-                <td><a target='newtab' href='<?php echo Mage::getBaseUrl()."pdfview?id=".$fb->getId(); ?>'><?php echo $fb->getTitle(); ?></a></td>
+                <td><a target='newtab' href='<?php echo Mage::getBaseUrl()."pdfview?id=".$fb->getId(); ?>&session=<?php echo rand(); ?>'><?php echo $fb->getTitle(); ?></a></td>
             </tr>
         <?php
     }
