@@ -71,7 +71,7 @@ Customer account home dashboard layout
 
     </customer_account_index>
 
-    <sales_order_history translate="label">
+<!--     <sales_order_history translate="label">
         <label>Customer My Account Order History</label>
         <update handle="customer_account"/>
         <reference name="my.account.wrapper">
@@ -82,7 +82,7 @@ Customer account home dashboard layout
             </block>
             <block type="customer/account_dashboard" name="customer.account.link.back" template="customer/account/link/back.phtml"/>
         </reference>
-    </sales_order_history>
+    </sales_order_history> -->
 
 
     <sales_order_view translate="label">

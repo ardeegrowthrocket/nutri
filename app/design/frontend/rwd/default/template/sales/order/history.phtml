@@ -52,9 +52,26 @@ if($orders->count()!=0){
  $flipbook = Mage::getModel('pdfmaster/pdflist')->getCollection()->setOrder('position','ASC');
     foreach($flipbook as $fb){
 
+        $basepdf = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).($fb->getPdfFile());
+
         ?>
             <tr>
-                <td><a target='newtab' href='<?php echo Mage::getBaseUrl()."pdfview?id=".$fb->getId(); ?>'><?php echo $fb->getTitle(); ?></a></td>
+                <td>
+    <script type="text/javascript">
+    jQuery(document).ready(function() {
+        jQuery("#book<?php echo $fb->getId(); ?>").swipeBook({
+            pdfUrl: "<?php echo $basepdf; ?>",
+            lightBox:true,
+            btnDownloadPages:false,
+            btnDownloadPdf:false,
+            btnPrint:false,
+            btnShare:false,
+        });
+    })
+    </script>
+
+    <div id="book<?php echo $fb->getId(); ?>"><?php echo $fb->getTitle(); ?></div>
+                </td>
             </tr>
         <?php
     }
