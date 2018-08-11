@@ -46,13 +46,9 @@ Supported layout update handles (special):
 Default layout, loads most of the pages
 -->
 
+
     <default>
-        <!-- Mage_Customer -->
-        <reference name="head">      
-        <action method="addItem"><type>skin_js</type><name>pdf/js/flipbook.min.js</name></action> 
-        <action method="addItem"><type>skin_css</type><name>pdf/css/flipbook.style.css</name><params/></action>
-        <action method="addItem"><type>skin_css</type><name>pdf/css/font-awesome.css</name><params/></action>
-        </reference>
+
 
         <reference name="top.links">
             <action method="addLink" translate="label title" module="customer"><label>My Account</label><url helper="customer/getAccountUrl"/><title>My Account</title><prepare/><urlParams/><position>10</position></action>

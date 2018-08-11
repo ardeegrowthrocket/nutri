@@ -61,7 +61,11 @@ if($orders->count()!=0){
     jQuery(document).ready(function() {
         jQuery("#book<?php echo $fb->getId(); ?>").swipeBook({
             pdfUrl: "<?php echo $basepdf; ?>",
-            lightBox:true
+            lightBox:true,
+            btnDownloadPages:false,
+            btnDownloadPdf:false,
+            btnPrint:false,
+            btnShare:false,
         });
     })
     </script>
