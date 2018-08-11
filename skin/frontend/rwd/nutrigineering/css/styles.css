@@ -3356,15 +3356,21 @@ div#top-header {
 }
 
 #top-header a.skip-link{
-	background: #95ae5d;
-	top: -23px;
-	padding: 15px 32px;
-	text-align: center;
-	float: right;
-	margin-left: 75px;
-	color: white;
-	line-height: 2;
+    background: #95ae5d;
+    top: -23px;
+    padding: 14px 32px;
+    text-align: center;
+    float: right;
+    margin-left: 75px;
+    color: white;
+    padding-top: 22px;
+    line-height: 2;
+    padding-bottom: 8px;
 }
+span.count b {
+	font-family: AvenirLTPro-Heavy;
+}
+
 div#top-header a {
 	color: #999999;
 	margin-left: 5px;
@@ -4165,15 +4171,16 @@ a.skip-link {
   }
 
   #header-cart.skip-active {
-	background: #FBFBFB;
-	border: solid 1px #cccccc;
-	display: block;
-	position: absolute;
-	z-index: 200;
-	top: 40px;
-	right: 0;
-	width: 320px;
-	background: white;
+    border: solid 1px #cccccc;
+    display: block;
+    position: absolute;
+    z-index: 200;
+    left: 80.2%;
+    width: auto;
+    min-width: 276px;
+    background: white;
+    border-radius: 2px;
+
   }
 }
 /* -------------------------------------------- *
@@ -4239,7 +4246,7 @@ a.skip-link {
   }
   .skip-cart .count,
   .skip-link.skip-active .count {
-	color: #000;
+	font-size:12px;
   }
 }
 .skip-cart .count.empty {
@@ -5468,27 +5475,7 @@ p.product-name a:hover {
 	display: block;
   }
 }
-.product-img-box {
-  width: 50%;
-  float: left;
-}
-.product-img-box .product-name h1 {
-  border: 0;
-}
-.product-img-box .product-image {
-  margin-bottom: 10px;
-}
-.product-img-box .product-image img {
-  max-width: 100%;
-  max-height: 750px;
-  margin: 0px auto;
-}
 
-@media only screen and (max-width: 479px) {
-  .product-img-box .product-image img {
-	max-height: 450px;
-  }
-}
 .product-image-gallery {
   position: relative;
 }
@@ -5549,9 +5536,6 @@ p.product-name a:hover {
   padding-left: 15px;
 }
 
-.product-img-box {
-  padding-right: 15px;
-}
 
 .product-view .product-shop,
 .product-img-box,
@@ -5933,10 +5917,6 @@ p.product-name a:hover {
 @media only screen and (min-width: 771px) {
   .product-view .product-shop .product-name {
 	display: block;
-  }
-
-  .product-img-box .product-name {
-	display: none;
   }
 }
 @media only screen and (max-width: 479px) {

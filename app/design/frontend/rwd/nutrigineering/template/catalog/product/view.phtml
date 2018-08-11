@@ -33,60 +33,55 @@
 ?>
 <?php $_helper = $this->helper('catalog/output'); ?>
 <?php $_product = $this->getProduct(); ?>
+
 <script type="text/javascript">
 	var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
 </script>
 <div id="messages_product_view"><?php echo $this->getMessagesBlock()->toHtml() ?></div>
-<div class="product-view">
-	<div class="product-essential">
-		<form action="<?php echo $this->getSubmitUrl($_product, array('_secure' => $this->_isSecure())) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+
+
+<div class="row">
+	<div class="small-12 large-6 columns">
+			<div class="product-img-box">
+				<?php echo $this->getChildHtml('media') ?>
+			</div>
+	</div>
+	<div class="small-12 large-6 columns">
+<form action="<?php echo $this->getSubmitUrl($_product, array('_secure' => $this->_isSecure())) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
 			<?php echo $this->getBlockHtml('formkey') ?>
 			<div class="no-display">
 				<input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
 				<input type="hidden" name="related_product" id="related-products-field" value="" />
 			</div>
 
-			<div class="product-img-box">
-				<div class="product-name">
-					<h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
-				</div>
-				<?php echo $this->getChildHtml('media') ?>
-			</div>
+		<h1><?php echo $_product->getName() ?></h1>
+		<span>item #<?php echo  $_product->getSku() ?></span>
+		<div class="review-sec">
+			<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+		</div>
 
-			<div class="product-shop">
-				<div class="product-name">
-					<span class="h1"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></span>
-				</div>
-
+			<?php echo $this->getReviewsSummaryHtml($_product, 'default', false)?>
 				<div class="price-info">
 					<?php echo $this->getPriceHtml($_product); ?>
 					<?php echo $this->getChildHtml('bundle_prices') ?>
 					<?php echo $this->getTierPriceHtml() ?>
+
+				</div>	
+				<?php if ($_product->getPdpShoutout()):?>	
+					<p><?php echo $_product->getPdpShoutout(); ?></p>
+				<?php endif; ?>
+				<div class="desc">
+					<?php echo $_product->getDescription() ?>
 				</div>
 
 				<div class="extra-info">
-					<?php echo $this->getReviewsSummaryHtml($_product, 'default', false)?>
 					<?php echo $this->getChildHtml('product_type_availability'); ?>
 				</div>
 
-				<?php echo $this->getChildHtml('alert_urls') ?>
-
-				<?php if ($_product->getShortDescription()):?>
-					<div class="short-description">
-						<div class="std"><?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?></div>
-					</div>
-				<?php endif;?>
-
-
-
-
-				<?php echo $this->getChildHtml('other');?>
-
-				<?php if ($_product->isSaleable() && $this->hasOptions()):?>
-					<?php echo $this->getChildChildHtml('container1', '', true, true) ?>
-				<?php endif;?>
-
-			</div>
+			<div class="clearer"></div>
+			<?php if ($_product->isSaleable() && $this->hasOptions()):?>
+				<?php echo $this->getChildChildHtml('container2', '', true, true) ?>
+			<?php endif;?>
 
 			<div class="add-to-cart-wrapper">
 				<?php echo $this->getChildHtml('product_type_data') ?>
@@ -100,43 +95,30 @@
 								<span class="or"><?php echo $this->__('OR') ?></span>
 							<?php endif; ?>
 						<?php endif; ?>
-						<?php echo $this->getChildHtml('addto') ?>
-						<?php echo $this->getChildHtml('sharing') ?>
+	
 					</div>
-					<?php echo $this->getChildHtml('extra_buttons') ?>
-				<?php elseif (!$_product->isSaleable()): ?>
-					<div class="add-to-box">
-						<?php echo $this->getChildHtml('addto') ?>
-						<?php echo $this->getChildHtml('sharing') ?>
-					</div>
+		
 				<?php endif; ?>
 			</div>
-
-			<?php echo $this->getChildHtml('related_products') ?>
-
-			<div class="clearer"></div>
-			<?php if ($_product->isSaleable() && $this->hasOptions()):?>
-				<?php echo $this->getChildChildHtml('container2', '', true, true) ?>
-			<?php endif;?>
-
 		</form>
 
-		<div class="product-collateral toggle-content tabs">
-			<?php if ($detailedInfoGroup = $this->getChildGroup('detailed_info', 'getChildHtml')):?>
-				<dl id="collateral-tabs" class="collateral-tabs">
-					<?php foreach ($detailedInfoGroup as $alias => $html):?>
-						<dt class="tab"><span><?php echo $this->escapeHtml($this->getChildData($alias, 'title')) ?></span></dt>
-						<dd class="tab-container">
-							<?php if( $alias == 'description' ){ ?>
-								<div class="tab-content"><?php echo $html; ?></div>
-							<?php } else { ?>
-								<div class="tab-content"><?php echo $html ?></div>
-							<?php } ?>
-						</dd>
-					<?php endforeach;?>
-				</dl>
-			<?php endif; ?>
-		</div>
+
+		<!-- Go to www.addthis.com/dashboard to customize your tools --> 
+		<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ac9cef24ce3b106"></script>
+<!-- Go to www.addthis.com/dashboard to customize your tools --> 
+		<div class="addthis_inline_share_toolbox_paze"></div>
+
+
+	</div>
+
+
+
+				<div class="review-hide" style="display: none;">
+				    <?php echo $this->getLayout()->createBlock('review/product_view_list')->setTemplate('review/product/view/list.phtml')->toHtml() ?>
+				    <?php echo $this->getLayout()->createBlock('review/form')->setBlockId('product.review.form')->toHtml() ?>
+				</div>        
+
+</div>
 
 		<script type="text/javascript">
 		//<![CDATA[
@@ -189,77 +171,3 @@
 			}.bind(productAddToCartForm);
 		//]]>
 		</script>
-		<script type="text/javascript">
-
-		function getdate() {
-		    var tt = document.getElementById('options_2_date').value;
-			var dayn = jQuery('.product-cardiometabolic-meal-plan #select_6').val();
-		    if(dayn == "13"){
-		    var dayn = 7;
-		    }
-		    if(dayn == "14"){
-		    var dayn = 14;
-		    }
-		    if(dayn == "15"){
-		    var dayn = 28;
-		    }
-		    if(dayn == "16"){
-		    var dayn = 42;
-		    }
-		    var date = new Date(tt);
-		    var newdate = new Date(date);
-
-		    newdate.setDate(newdate.getDate() + dayn);
-		    
-		    var dd = newdate.getDate();
-		    var mm = newdate.getMonth() + 1;
-		    var y = newdate.getFullYear();
-
-		    var someFormattedDate = mm + '/' + dd + '/' + y;
-		    document.getElementById('options_5_date').value = someFormattedDate;
-		}
-		function getweek() {
-			var week = jQuery('.product-cardiometabolic-meal-plan #select_1').val();
-		    if((week == "1")||(week =='5')|| (week =='9')){
-		   		jQuery('.product-cardiometabolic-meal-plan #select_6').val('13').trigger('change');
-		    }
-		    if((week == "2")||(week =='6')|| (week =='10')){
-		   		jQuery('.product-cardiometabolic-meal-plan #select_6').val('14').trigger('change');
-		    }
-		    if((week == "3")||(week =='7')|| (week =='11')){
-		   		jQuery('.product-cardiometabolic-meal-plan #select_6').val('15').trigger('change');
-		    }
-		    if((week == "4")||(week =='8')|| (week =='12')){
-		   		jQuery('.product-cardiometabolic-meal-plan #select_6').val('16').trigger('change');
-		    }
-		
-		}
-		
-		jQuery(document).ready(function(){
-		    jQuery('.product-cardiometabolic-meal-plan #options_5_date').prop('disabled', true);
-		    jQuery('.product-cardiometabolic-meal-plan #select_6').prop('disabled', true);
-		    jQuery( ".product-cardiometabolic-meal-plan .product-options dt:eq( 3 )" ).hide();
-		    jQuery( ".product-cardiometabolic-meal-plan .product-options dd:eq( 3 )" ).hide();
-		    getdate();
-		    getweek();
-		});
-
-		jQuery('.product-cardiometabolic-meal-plan #select_6').on('change', function() {
-		  getdate();
-		});	
-		jQuery('.product-cardiometabolic-meal-plan #options_2_date').on('change', function() {
-		  jQuery('.product-cardiometabolic-meal-plan #select_6').val('');
-		  jQuery('.product-cardiometabolic-meal-plan #select_1').val('');
-		});	
-		jQuery('.product-cardiometabolic-meal-plan #select_1').on('change', function() {
-			jQuery( ".product-cardiometabolic-meal-plan .product-options dt:eq( 3 )" ).show();
-		    jQuery( ".product-cardiometabolic-meal-plan .product-options dd:eq( 3 )" ).show();
-		   	getweek();
-		});		
-		</script>
-	</div>
-
-	<?php echo $this->getChildHtml('upsell_products') ?>
-	<?php echo $this->getChildHtml('product_additional_data') ?>
-
-</div>

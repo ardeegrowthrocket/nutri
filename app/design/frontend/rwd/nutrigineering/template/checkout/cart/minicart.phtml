@@ -1,0 +1,112 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     rwd_default
+ * @copyright   Copyright (c) 2006-2017 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+
+/**
+ * Shoping cart sidebar
+ *
+ * @see Mage_Checkout_Block_Cart_Sidebar
+ */
+
+?>
+<style type="text/css">
+	a.button.button-black.cart-link {
+	font-size: 12px;
+    background: transparent;
+    padding: 12px;
+    margin-left: 10px !important;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+}
+a.skip-link.skip-cart {
+    text-transform: lowercase;
+}
+.minicart-wrapper .empty {
+    width:60%;
+    margin:0 auto;
+}
+.empty-price{
+	font-family: AvenirLTStd-Black;
+    font-size: 18px;
+    color: #535353;
+}
+.shadow-div{
+	padding: 17px 0;
+    -moz-box-shadow: inset 0px 0px 1px #000000;
+    -webkit-box-shadow: inset 0px 0px 1px #000000;
+    box-shadow: inset 0px 0px 1px #000000;
+    background-color: #f5f5f5;
+}
+.empty-price{
+    text-align: center;
+    margin-top: 15px !important;
+    margin-bottom: 15px !important;
+}
+a.product-image {
+    display: inline-block;
+}
+
+p.empty span {
+    display: inline-block;
+    position: absolute;
+    margin-left: 15px;
+    text-align: left;
+}
+p.empty.empty-price span {
+    position: relative;
+    margin-left: 0;
+    text-align: center;
+}
+</style>
+<?php
+    $_cartQty = $this->getSummaryCount();
+    if(empty($_cartQty)) {
+        $_cartQty = '0 item in the';
+    }
+    else{
+   	if($_cartQty >= 2){
+   		$_cartQty =  $_cartQty.' items in the';
+   	}	
+   		
+   	 else{
+   	 	$_cartQty =  $_cartQty.' item in the';
+   	 }
+   		
+  
+    }
+?>
+
+<a href="<?php echo $this->helper('checkout/cart')->getCartUrl(); ?>" data-target-element="#header-cart" class="skip-link skip-cart <?php if($_cartQty <= 0): ?> no-count<?php endif; ?>">
+   <span class="count">
+   		<b><?php echo $_cartQty; ?></b>
+
+   </span>  <i class="fas fa-shopping-cart"></i>
+    
+</a>
+
+<div id="header-cart" class="block block-cart skip-content">
+    <?php echo $this->getChildHtml('minicart_content');?>
+</div>
