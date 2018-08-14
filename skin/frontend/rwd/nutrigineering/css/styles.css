@@ -6473,7 +6473,7 @@ p.product-name a:hover {
  * ============================================ */
 .cart-table {
   float: left;
-  width: 60%;
+  width: 100%;
 }
 
 .cart .button {
@@ -6489,14 +6489,6 @@ p.product-name a:hover {
   padding-left: 20px;
 }
 
-.cart-totals,
-.cart-forms .discount,
-.cart-forms .giftcard,
-.cart-forms .shipping {
-  padding: 10px;
-  background-color: #f4f4f4;
-  border: 1px solid #cccccc;
-}
 
 .cart-table,
 .cart-totals,

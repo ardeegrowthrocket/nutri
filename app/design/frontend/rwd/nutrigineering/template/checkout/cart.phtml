@@ -1,0 +1,244 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     rwd_default
+ * @copyright   Copyright (c) 2006-2017 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Shopping cart template
+ *
+ * @var $this Mage_Checkout_Block_Cart
+ */
+?>
+<?php $_priceDisplay = ($this->helper('tax')->displayCartBothPrices()) ? 'display-both-prices' : 'display-single-price'; ?>
+
+<div class="cart-wrapper">
+    <div class="row">
+         <div class="small-12 large-6 large-centered columns">
+            <ul>
+                <li><i class="fas fa-shopping-cart fa-2x"></i> <span>1. Cart</span></li>
+                <li><i class="far fa-user fa-2x"></i> <span>2. Delivery Details</span></li>
+                <li><i class="fa fa-credit-card fa-2x"></i> <span>3. Payment Method</span></li>
+            </ul>            
+         </div>
+    </div>
+</div>
+
+
+<div class="cart <?php echo $_priceDisplay; ?>">
+     <h1><?php echo $this->__('Your Cart') ?></h1>
+        <?php 
+             $itemcount = Mage::helper('checkout/cart')->getSummaryCount(); 
+             $total = $this->helper('checkout/cart')->getQuote()->getGrandTotal();
+             $total = $this->helper('core')->formatPrice($total, false);
+        ?>  
+    <p>You have <?php echo $itemcount; ?> items for a total of <?php echo $total; ?> in your basket. </p>
+    <?php echo $this->getMessagesBlock()->toHtml() ?>
+    <?php echo $this->getChildHtml('form_before') ?>
+    <form action="<?php echo $this->getFormActionUrl() ?>" method="post">
+        <?php echo $this->getBlockHtml('formkey'); ?>
+
+
+             <?php if ($this->helper('tax')->displayCartBothPrices()): ?>
+                <?php echo $this->helper('tax')->getIncExcTaxLabel(false) ?>
+                <?php echo $this->helper('tax')->getIncExcTaxLabel(true) ?>
+                <?php echo $this->helper('tax')->getIncExcTaxLabel(false) ?>
+                <?php echo $this->helper('tax')->getIncExcTaxLabel(true) ?>
+             <?php endif; ?>
+                
+      <?php foreach($this->getItems() as $_item): ?>
+        <?php echo $this->getItemHtml($_item) ?>
+      <?php endforeach ?>
+      <hr/>
+    </form>
+
+    <?php echo $this->getChildHtml('shopping.cart.table.after'); ?>
+    <div class="cart-forms" style="display: none;">
+        <?php /* Extensions placeholder */ ?>
+        <?php echo $this->getChildHtml('checkout_cart_widget') ?>
+        <?php echo $this->getChildHtml('coupon') ?>
+        <?php echo $this->getChildHtml('checkout.cart.extra') ?>
+        <?php if (!$this->getIsVirtual()): echo $this->getChildHtml('shipping'); endif; ?>
+    </div>
+    <div class="cart-totals-wrapper">
+        <div class="cart-totals">
+            <div class="row">
+                <div class="large-12 small-12 columns">
+                    <?php echo $this->getChildHtml('totals'); ?>
+                </div>
+            </div>
+            
+            <?php if(!$this->hasError()): ?>
+           <div class="row">
+                <div class="large-12 small-12 columns">
+            <?php foreach ($this->getMethods('methods') as $method): ?>
+                <?php if ($methodHtml = $this->getMethodHtml($method)): ?>
+                    <?php echo $methodHtml; ?>
+                <?php endif; ?>
+            <?php endforeach; ?>
+                </div>
+             </div>
+            <?php endif; ?>
+        </div>
+    </div>
+    <?php echo $this->getChildHtml('crosssell') ?>
+</div>
+<script type="text/javascript">
+    jQuery('.cart-wrapper').insertAfter('#header');
+</script>
+<style type="text/css">
+    .wrapper{
+        background-color: #f5f5f5;
+    }
+    .cart-wrapper{
+        background-color: #ffffff;
+        margin-bottom: 30px; 
+        min-height: 150px;   
+    }
+    .cart-wrapper ul li {
+        width: 32%;
+        text-align: center;
+        display: inline-block;
+        padding: 35px 0;
+        border-left: 1px solid #ddd;
+        line-height: 2;
+
+    }
+    .cart-wrapper ul li span{
+        width:100%;
+        clear:both;
+        display: block;
+    }
+    .cart-wrapper ul li:first-child{
+         border-left:none;
+    }
+    .cart-wrapper .fa-shopping-cart{
+        color: #95ae5d;
+    }
+    .cart.display-single-price h1 {
+        font-family: 'AvenirLTPro-Light';
+        font-size: 30px;
+        margin-bottom: 2px;
+    }
+
+    .cart.display-single-price p {
+        font-family: 'AvenirLTPro-Light';
+        font-size: 22px;
+        color: #959595;
+        margin-bottom: 44px;
+    }
+    .cart.display-single-price h2 a, .cart.display-single-price  label {
+        font-family: 'AvenirLTPro-Light';
+        font-size: 25px;
+        color: black;
+        font-weight: normal;            
+    }
+    .x-remove{
+        background-color: #cb4e4e;
+        color: white;
+        top: -18px;
+        left: -8px;
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        font-size: 22px;
+        line-height: 1.9;
+        text-align: center;
+        border-radius: 25px;
+        text-transform: lowercase;
+    }
+    .extra-padding {
+        padding: 0 15px;
+    }
+
+    .extra-padding span{
+        font-size:15px;
+        font-family: 'AvenirLTPro-Light';
+        color: #959595;
+    }
+    .cart.display-single-price .ui-spinner {
+       margin: 15px 0;  
+    }
+    .cart.display-single-price input[type=text].qty {
+        width: 2em;
+        min-height: 20px;
+    }
+    .cart.display-single-price hr{
+        border-color: #d4d4d4;
+    }
+    div#shopping-cart-totals-table div {
+        font-size:20px;
+        font-family: 'AvenirLTPro-Light';
+        color: #959595;
+        padding: 5px 2px;
+    }
+    div#shopping-cart-totals-table span {
+        font-size:20px;
+        font-family: 'AvenirLTPro-Light';
+        color: black;
+    }
+    .btn-update{
+        border-radius: 2px;
+        padding: 12px 30px;
+        background: #333333;
+        border: 2px solid #333333;
+        font-size: 18px;       
+    }
+    .price-box .price,
+    .price {
+      font-family: 'AvenirLTStd-Roman';
+      font-size: 25px;
+      color: black;
+    }
+    .cart-item-sec {
+        float: left;
+        width: 100%;
+        margin-bottom: 30px;
+    }
+    .cart-totals-wrapper{
+        margin-right: -15px;
+        margin-top: 20px;
+    }
+    #shopping-cart-totals-table hr{
+        max-width: 330px;
+        float: right;
+        width: 100%;
+        margin-top: 20px;
+    }
+    @media only screen and (max-width: 1023px) { 
+        .cart-wrapper ul li {
+            width: 100%;
+            border-left: 0;
+        }
+        .cart-wrapper {
+            min-height: 450px;
+        }
+        .cart-item-sec{
+            text-align: center;
+        }
+        .x-remove{
+            left: 132px;
+        }
+    }
+</style>
