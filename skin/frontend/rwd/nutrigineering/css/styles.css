@@ -2717,7 +2717,7 @@ li.centinel-logos div.input-box img {
 .input-box .v-fix {
   float: left;
   margin-right: 5px;
-  max-width: 100%;
+    width: 49.5%;
 }
 
 /* -------------------------------------------- *
@@ -2968,7 +2968,6 @@ p.required,
 #co-shipping-method-form .sp-methods dd label,
 .product-options ul.options-list label {
   color: #636363;
-  background-color: #f4f4f4;
   padding: 5px 10px;
   display: inline-block;
   width: auto;
@@ -7249,7 +7248,7 @@ p.product-name a:hover {
 @media only screen and (min-width: 980px) {
   .checkout-onepage-index .col-main {
 	float: left;
-	width: 68.75%;
+	width: 100%;
 	padding-right: 20px;
   }
   .checkout-onepage-index .col-right,
@@ -7268,16 +7267,7 @@ p.product-name a:hover {
 /* -------------------------------------------- *
  * Section Styling - Default
  */
-.opc .section .step-title {
-  width: 100%;
-  border-top: 1px solid #ececec;
-  position: relative;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  -webkit-user-select: none;
-  -o-user-select: none;
-  user-select: none;
-}
+
 .opc .section .step-title:after {
   content: '';
   display: table;
@@ -7291,10 +7281,6 @@ p.product-name a:hover {
 /* Using .no-touch since touch devices emulate hover, thereby making steps look active that are not */
 .no-touch .opc .section.allow:not(.active) .step-title:hover {
   background-color: #f4f4f4;
-}
-
-.opc .section.active .step-title {
-  border-bottom: 1px solid #ececec;
 }
 
 .opc .section .step-title a {
@@ -7343,12 +7329,11 @@ p.product-name a:hover {
 }
 
 .opc .section .step-title h2 {
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 40px;
-  height: 40px;
-  float: left;
-  margin: 0px 4px 0px 45px;
+    font-size: 24px;
+    font-weight: normal;
+    line-height: 40px;
+    margin-bottom: 0;
+    float: left;
 }
 
 .opc .section .step {
