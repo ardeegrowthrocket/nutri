@@ -19,7 +19,7 @@
  *
  * @category    design
  * @package     rwd_default
- * @copyright   Copyright (c) 2006-2017 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @copyright   Copyright (c) 2006-2016 X.commerce, Inc. and affiliates (http://www.magento.com)
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 
@@ -45,4 +45,17 @@ Checkout.prototype.gotoSection = function (section, reloadProgressBlock) {
     if (!reloadProgressBlock) {
         this.resetPreviousSteps();
     }
-};
+}
+
+$j(document).ready(function(){
+    console.log(accordion);
+    if(accordion.currentSection == 'opc-billing') {
+        billing.save();
+    }
+    $j("#opc-billing").hide();
+    $j("#opc-shipping .step-title").css('border-top', 'none');
+    $j("span.number").each(function(){
+        var n = parseInt($j(this).text());
+        $j(this).text(n-1);
+    });
+});
