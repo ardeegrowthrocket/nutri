@@ -3864,7 +3864,6 @@ a.skip-link {
 	z-index: 200;
   }
   .nav-primary li.level0 ul {
-background: #797979;
     border: solid 1px #797979;
     position: absolute;
     left: 0;
@@ -3875,10 +3874,6 @@ background: #797979;
     padding-left: 10px;
     padding-right: 10px;
      opacity: 0;
-    -moz-transition: opacity 1.5s ease-in-out;
-    -o-transition: opacity 1.5s ease-in-out;
-    -webkit-transition: opacity 1.5s ease-in-out;
-    transition: opacity 1.5s ease-in-out;
     height: 0;
 	/* Hide until displayed. */
   }
@@ -12414,6 +12409,12 @@ li.cheat {
     z-index: 1 !important;
     padding: 0 !important;
     pointer-events: none !important;
+    overflow: hidden;
+    max-height:0;
+    transition: max-height .5s ease-in-out; 
+}
+.nav-primary .menu-active > ul.level0 li.cheat{
+    max-height: 55px;
 }
 
 @media only screen and (min-width: 773px) {
@@ -12491,6 +12492,7 @@ body.cms-home .main-container {
 	li.level0.parent.menu-active ul {
 		display: block;
 		position: relative;
+		top:0;
 	}
 	.nav-primary li.level0 ul{
 		display: none;
