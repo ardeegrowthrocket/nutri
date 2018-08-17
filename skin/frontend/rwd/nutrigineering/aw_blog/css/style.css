@@ -368,8 +368,9 @@ body.blog-post-view strong, body.blog-post-view b{
     float: left;
 }
 .blog-post-view .post-banner {
-    overflow: hidden;
-    width: 100%;
+    position: relative;
+    max-width: 1260px;
+    margin: 0 auto;
 }
 body.blog-post-view a {
     color: #95ae5d;
@@ -403,3 +404,7 @@ body.blog-post-view a {
 }
   
 }
+
+ .blog-post-view .main-container{
+ 	padding: 75px;
+ }
