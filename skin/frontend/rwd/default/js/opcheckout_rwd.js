@@ -46,16 +46,3 @@ Checkout.prototype.gotoSection = function (section, reloadProgressBlock) {
         this.resetPreviousSteps();
     }
 }
-
-$j(document).ready(function(){
-    console.log(accordion);
-    if(accordion.currentSection == 'opc-billing') {
-        billing.save();
-    }
-    $j("#opc-billing").hide();
-    $j("#opc-shipping .step-title").css('border-top', 'none');
-    $j("span.number").each(function(){
-        var n = parseInt($j(this).text());
-        $j(this).text(n-1);
-    });
-});

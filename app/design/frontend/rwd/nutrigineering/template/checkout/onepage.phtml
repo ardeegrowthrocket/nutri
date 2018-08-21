@@ -46,7 +46,15 @@
     <li id="opc-<?php echo $_stepId ?>" class="section<?php echo !empty($_stepInfo['allow'])?' allow':'' ?><?php echo !empty($_stepInfo['complete'])?' saved':'' ?>">
         <div class="step-title">
             <span class="number" style="display: none;"><?php echo $i ?></span>
-            <h2><?php echo $_stepInfo['label'] ?></h2>
+            <h2>
+                <?php if( $_stepInfo['label'] == 'Delivery Address'): ?>
+                    Billing Address
+                <?php else: ?>
+                    <?php echo $_stepInfo['label'] ?>
+                <?php endif; ?>
+                
+                    
+             </h2>
         </div>
         <div id="checkout-step-<?php echo $_stepId ?>" class="step a-item" style="display:none;">
             <?php echo $this->getChildHtml($_stepId) ?>
@@ -72,9 +80,33 @@
     jQuery('document').ready(function(){
         jQuery('.cart-wrapper').insertAfter('#header');
          jQuery('#billing-address-select').select2({
-                    placeholder: "Billing Address",
-        });     
+            width: '50%'
+       
+        });
+        jQuery('#billing-new-address-form .input-box select').select2({
+             allowClear: true,
+             width: '50%'
+        }); 
+   
+         
+        
+     });
+    jQuery('#opc-billing div.step-title').click(function(){
+       jQuery('.cart-wrapper .fa-credit-card').css('color','inherit');
+       jQuery('.cart-wrapper .fa-user').css('color','#95ae5d');
+      
     });
+        jQuery('#checkoutSteps li button').click(function(){
+         var green = jQuery('.opc-billing').hasClass('active')
+        if(green){
+        }
+        else{
+           jQuery('.cart-wrapper .fa-user').css('color','inherit');
+           jQuery('.cart-wrapper .fa-credit-card').css('color','#95ae5d');
+        }
+    });
+
+
 
      
 </script>
@@ -104,9 +136,7 @@
     .cart-wrapper ul li:first-child{
          border-left:none;
     }
-    .cart-wrapper .fa-credit-card{
-        color: #95ae5d;
-    }
+    
     .cart.display-single-price h1 {
         font-family: 'AvenirLTPro-Light';
         font-size: 30px;
@@ -266,5 +296,8 @@
 }
 #checkout-step-login{
     background-color: transparent;
+}
+.customer-name-middlename input {
+    margin-bottom: 14px;
 }
 </style>
