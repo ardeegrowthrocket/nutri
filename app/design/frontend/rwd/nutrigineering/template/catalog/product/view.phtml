@@ -38,7 +38,13 @@
 	var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
 </script>
 <div id="messages_product_view"><?php echo $this->getMessagesBlock()->toHtml() ?></div>
-
+<div class="row">
+	<div class="small-12 large-12 columns" style="text-align: center;">
+			<h1><?php echo $_product->getName() ?></h1>
+	</div>
+</div>
+<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('pdpblock')->toHtml(); 
+?> 
 
 <div class="row">
 	<div class="small-12 large-6 columns">
@@ -54,7 +60,7 @@
 				<input type="hidden" name="related_product" id="related-products-field" value="" />
 			</div>
 
-		<h1><?php echo $_product->getName() ?></h1>
+		<h2><?php echo $_product->getName() ?></h2>
 		<span class="sku-item">item #<?php echo  $_product->getSku() ?></span>
 		<div class="review-sec" style="display: inline-block;">
 			<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
@@ -76,7 +82,7 @@
 					<?php echo $_product->getDescription() ?>
 				</div>
 
-				<div class="extra-info">
+				<div class="extra-info" id="box-cart">
 					<span style="display: inline-block;color:#a4a4a4;">availability:</span>
 					<span style="display: inline-block;color: #000000;"><?php echo $this->getChildHtml('product_type_availability'); ?></span>
 				</div>
@@ -176,9 +182,11 @@
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <style type="text/css">
   	.catalog-product-view h1{
-  		    font-size: 30px;
-		    margin-bottom: 0;
-		    font-family: AvenirLTPro-Roman;
+		font-size: 36px;
+	    margin-bottom: 0;
+	    font-family: AvenirLTStd-Medium;
+	    margin-top:75px;
+	    margin-bottom:77px;
   	}
   	.sku-item{
   		width: 100%;
@@ -267,6 +275,56 @@
 	.catalog-product-view .wrapper {
 	    background: #f5f5f5;
 	}	
+	.duration span {
+	    width:100%;
+	    float:left;
+    	line-height: 1.2;
+
+	}
+	.duration{
+	    line-height:.7;
+	    text-align:right;
+	    display: inline-block;
+	    width: 80px;    
+	}
+	.catalog-product-view p{
+    margin-bottom:20px;
+    line-height:2;
+     font-size:15px;
+    font-family: 'AvenirLTPro-Medium';
+	}
+
+	.catalog-product-view p b {
+	    font-size:24px;
+	    font-family: 'AvenirLTPro-Medium';
+	    font-weight:normal;
+	}
+	.border-product {
+	    border: 1px solid #ddd;
+	    padding: 60px 40px;
+	    width: 90%;
+	    float: right;
+	    margin-top: 10px;
+	    padding-bottom: 0;
+	}
+
+	.border-product p {
+	    font-family: 'AvenirLTPro-Medium';
+	    font-size:18px;
+	}
+
+	.border-product ul li {
+	    list-style: disc;
+	    font-family: 'AvenirLTPro-Medium';
+	    font-size: 15px;
+	    line-height: 2;
+	    margin-bottom: 30px;
+	}
+	.catalog-product-view  h2 {
+	    font-family: 'AvenirLTStd-Roman';
+	    font-size: 30px;
+	    color: black;
+	}
   </style>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
@@ -287,7 +345,63 @@
 		        jQuerycontainer.val(value);
 		    }
 
-		});  	
-		
+		});  		
+</script>
 
-  </script>
+<script type="text/javascript">// <![CDATA[
+   jQuery(document).ready(function(){
+   jQuery('.about-wrapper').detach().insertAfter('#header');
+ 
+jQuery('.video').parent().click(function () {
+    if(jQuery(this).children(".video").get(0).paused){
+        jQuery(this).children(".video").get(0).play();
+        jQuery(this).children(".playpause").fadeOut();
+    }else{
+       jQuery(this).children(".video").get(0).pause();
+        jQuery(this).children(".playpause").fadeIn();
+    }
+}); 
+
+
+
+       jQuery('.responsimg').responsImg({
+              allowDownsize: false,
+              elementQuery: false,
+              delay: 250,
+              breakpoints: {
+                mobile: 320,
+                desktop: 960
+              }
+        }); 
+
+   });
+   // ]]>
+
+
+</script>
+<style>
+.video {
+    width: 100%;
+}
+.wrapper-vid{
+    display:table;
+    width:100%;
+    position:relative;
+    margin-bottom: 84px;
+}
+.playpause {
+    background-image:url(/media/pages/videoplay.png);
+    background-repeat:no-repeat;
+    width:50%;
+    height:50%;
+    position:absolute;
+    left:0%;
+    right:0%;
+    top:0%;
+    bottom:0%;
+    margin:auto;
+    background-size:contain;
+    background-position: center;
+}
+
+</style>
