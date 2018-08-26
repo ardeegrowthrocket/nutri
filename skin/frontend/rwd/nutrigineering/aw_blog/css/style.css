@@ -9,6 +9,7 @@
 .blog-index-list .postTitle h2 {
     font-size:30px;
     margin-bottom:30px; 
+    min-height: 100px;  
 }
 .footer-newsletter {
     position: relative;
@@ -56,7 +57,12 @@
 
 .blog-index-list a.aw-blog-read-more.button.button-black {
     background: transparent;
-    color: #333;
+    color: #757676;
+    font-family: 'AvenirLTPro-Medium';
+    font-size: 14.37px;
+    letter-spacing: 3px;
+    border-color: #757676;
+    border-radius: 0;
 }
 .blog-index-list a.aw-blog-read-more.button.button-black:hover {
     background: #333;
