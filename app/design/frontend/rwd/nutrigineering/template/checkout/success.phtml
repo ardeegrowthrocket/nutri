@@ -35,7 +35,7 @@
 </div>
 <div class="row">
     <div class="large-12 columns" style="text-align: left;">
- <h1>Thank you for purchasing this Nutrigineering product!</h1>
+ <h1 style="text-transform: capitalize;">Thank you for purchasing this Nutrigineering product!</h1>
 <?php echo $this->getMessagesBlock()->toHtml() ?>
 
 <div class="avr">
@@ -46,7 +46,7 @@
 <li>Step 3: Select Elimination Diet Program</li>
  </ul>
 </div>
-<a href="<?php echo $this->getViewOrderUrl(); ?>" class="button view-p">View Purchase </a>       
+<a disabled="disabled" class="button button-black" onclick="window.location='<?php echo $this->getViewOrderUrl(); ?>';" style="background-color: #95AB62;border-color:#95AB62;margin-top: 25px;font-family: 'AvenirLTPro-Light';border-radius: 0;padding: 15px 60px;">View Purchase</a>    
     </div>
 </div>
 

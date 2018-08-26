@@ -1001,7 +1001,7 @@ body:not(.customer-account) .block:first-child .block-title {
   display: inline-block;
   padding: 0.2em 1.1em 0.1em;
   border: 2px solid #95AB62;
-  border-radius:0.6em;
+  border-radius:0;
   color: #FFF;
   font-size: 1.1em;
   font-weight: bold;
