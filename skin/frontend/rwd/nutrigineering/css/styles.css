@@ -12420,6 +12420,12 @@ li.cheat {
 	li.level0.parent a.level0:after {
 		background-position: 50% 0;
 	}
+	li.level0.nav-3.parent a.level0:after{
+		background-position: 87% 0;
+	}
+	li.level0.nav-5.parent a.level0:after{
+		background-position: 87% 0;
+	}
 }
 @media only screen and (max-width: 772px) {
 	li.cheat {
@@ -12464,18 +12470,17 @@ span.italic-p {
 
 li.level0.parent a.level0:after {
 	content: '';
-	clear: both;
-	width: 100%;
-	float: left;
-	text-align: left;
-	background: url(/media/pages/down.png)no-repeat;
-	padding: 10px;
-	height: 10px;
-	/*width: 10px;*/
-	background-size:cover%;
-	position:absolute;
-	bottom:-20px;
-	left:0;
+    clear: both;
+    width: 100%;
+    float: left;
+    text-align: right;
+    background: url(/media/pages/down.png)no-repeat;
+    padding: 10px;
+    height: 10px;
+    position: absolute;
+    bottom: -20px;
+    right: 0px;
+
 	background-position: 50% 0;
 }
 
@@ -12594,4 +12599,7 @@ body.customer-account-login .wrapper,.customer-account-forgotpassword .wrapper{
 .catalog-product-view form#product_addtocart_form{
 	 width: 87%;
     float: right;
+}
+body.paypal-express-review h2 {
+    text-transform: capitalize;
 }
