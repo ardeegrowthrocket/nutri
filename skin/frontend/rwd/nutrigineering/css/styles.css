@@ -3757,7 +3757,6 @@ a.skip-link {
   position: relative;
 }
 .nav-primary li.level1 a {
-  border-bottom: 1px solid #FFF;
   color:#FFF;
   font-weight:bold;
   font-size:13px;
@@ -7616,7 +7615,7 @@ body:not(.opc-has-progressed-from-login) .opc.opc-firststep-login .section#opc-l
   margin-bottom: 15px;
 }
 #review-buttons-container .btn-checkout {
-  min-width: 220px;
+background-color: #95AB62;border-color:#95AB62;margin-top: 25px;font-family: 'AvenirLTPro-Light';border-radius: 0;padding: 15px 60px;color:white;
 }
 #review-buttons-container .please-wait {
   float: left;
@@ -12410,11 +12409,13 @@ li.cheat {
 }
 .nav-primary .menu-active > ul.level0 li.cheat{
     max-height: 55px;
+    margin-top: 10px;
 }
 
 @media only screen and (min-width: 773px) {
 	.nav-primary .menu-active > ul.level0 {
 	    margin-left:-50%;
+	    border: none;
 	}
 	li.level0.parent a.level0:after {
 		background-position: 50% 0;
@@ -12434,13 +12435,11 @@ li.cheat {
 }
 .nav-primary .menu-active > ul.level0 li {
 	display: inline-block;
-	padding: 5px 10px;
+	padding: 20px 10px;
 	z-index:2;
 	/*left: 17%;*/
 }
-.sticky .nav-primary .menu-active > ul.level0 {
-	margin-top: 25px;
-}
+
 header#header.sticky {
   position: fixed;
   width: 100%;
