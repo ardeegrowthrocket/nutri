@@ -8160,11 +8160,6 @@ body:not(.opc-has-progressed-from-login) .opc.opc-firststep-login .section#opc-l
   max-width: 455px;
 }
 
-.customer-account-forgotpassword .fieldset,
-.customer-account-forgotpassword .buttons-set {
-  margin-left: 30px;
-  max-width: 400px;
-}
 @media only screen and (max-width: 479px) {
   .customer-account-forgotpassword .fieldset,
   .customer-account-forgotpassword .buttons-set {
@@ -12535,11 +12530,12 @@ body.blog-post-view {
 }
 
 .col-1.new-users,.forgot-users{
-	width: 50%;
-    margin: 0 auto;
+    width: 50%;
+    margin: 0 auto; 
     float: none;
     background: #fefefe;
-    padding: 4% !important;
+    padding: 4%;
+    padding-bottom: 12%;
 }
 li.control.remember-me-box {
     list-style: none;
