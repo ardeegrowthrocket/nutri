@@ -12591,3 +12591,8 @@ body.customer-account-login .wrapper,.customer-account-forgotpassword .wrapper{
 .nav-primary li.level0.nav-6.last a {
     padding-right: 0;
 }
+
+.catalog-product-view form#product_addtocart_form{
+	 width: 87%;
+    float: right;
+}

@@ -98,7 +98,6 @@
 				<?php if (!$this->hasOptions()):?>
 					<div class="add-to-box">
 						<?php if($_product->isSaleable()): ?>
-							
 							<?php echo $this->getChildHtml('addtocart') ?>
 						<?php endif; ?>
 	
@@ -106,7 +105,7 @@
 		
 				<?php endif; ?>
 			</div>
-		</form>
+
 		 <a href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>" class="link-wishlist"><i class="far fa-heart" style="color: #f58e7d;"></i> <?php echo $this->__('Add to Wishlist') ?></a>
 
 
@@ -114,6 +113,10 @@
 		<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ac9cef24ce3b106"></script>
 <!-- Go to www.addthis.com/dashboard to customize your tools --> 
 		<div class="addthis_inline_share_toolbox_paze"></div>
+
+
+		</form>
+
 
 
 	</div>
@@ -181,6 +184,13 @@
 
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <style type="text/css">
+	.catalog-product-view .button-black{
+	 	font-size: 26px !important;
+	 	font-family: 'AvenirLTPro-Roman';
+	 	letter-spacing: 3px;
+	 	border-radius: 0 !important;
+	 	font-weight: 100;
+	}
   	.catalog-product-view .main-container h1{
 		font-size: 36px;
 	    margin-bottom: 0;
@@ -235,7 +245,7 @@
 	}
 	div#auto-price {
 	    font-size: 25px;
-	    margin: 0 10%;
+	    margin: 0 4%;
 	}
 	.add-to-box {
 	    margin-bottom: 20px;
@@ -302,7 +312,7 @@
 	.border-product {
 	    border: 1px solid #ddd;
 	    padding: 60px 40px;
-	    width: 70%;
+	    width: 87%;
 	    float: right;
 	    margin-top: 10px;
 	    padding-bottom: 0;
