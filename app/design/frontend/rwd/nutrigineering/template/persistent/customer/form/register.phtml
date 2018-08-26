@@ -57,62 +57,47 @@
                                     </div>
 
                                     <div class="row">
-                                        <div class="small-12 large-6 columns">
-                                            <?php echo $this->getLayout()->createBlock('customer/widget_name')->setObject($this->getFormData())->setForceUseCustomerAttributes(true)->toHtml() ?>
 
-                                                <input type="number" autocapitalize="off" autocorrect="off" spellcheck="false" name="age" id="age" value="<?php echo $this->escapeHtml($this->getFormData()->getAge()) ?>" title="<?php echo $this->quoteEscape($this->__('Age')) ?>" placeholder="<?php echo $this->quoteEscape($this->__('Age')) ?>" class="input-text required-entry" />
-                                                <input type="number" autocapitalize="off" autocorrect="off" spellcheck="false" name="height" id="height" placeholder="<?php echo $this->quoteEscape($this->__('Height (in CM)*')) ?>" value="<?php echo $this->escapeHtml($this->getFormData()->getHeight()) ?>" title="<?php echo $this->quoteEscape($this->__('Height')) ?>" class="input-text required-entry" />
-                                        </div>
-                                        <div class="small-12 large-6 columns">
+                                        <?php echo $this->getLayout()->createBlock('customer/widget_name')->setObject($this->getFormData())->setForceUseCustomerAttributes(true)->toHtml() ?>
+
+                                         <div class="small-12 large-6 columns"> 
                                             <input type="email" autocapitalize="off" autocorrect="off" spellcheck="false" name="email" id="email_address" value="<?php echo $this->escapeHtml($this->getFormData()->getEmail()) ?>" title="<?php echo $this->quoteEscape($this->__('Email Address')) ?>" placeholder="<?php echo $this->quoteEscape($this->__('Email Address*')) ?>" class="input-text validate-email required-entry" />
-                                            <input type="text" autocapitalize="off" autocorrect="off" spellcheck="false" name="weight" id="weight" value="<?php echo $this->escapeHtml($this->getFormData()->getWeight())?>" title="<?php echo $this->quoteEscape($this->__('Weight')) ?>" placeholder="<?php echo $this->quoteEscape($this->__('Weight (in KG)*')) ?>" class="input-text required-entry" />
-                                            <?php $_taxvat = $this->getLayout()->createBlock('customer/widget_taxvat') ?>
-                                                <?php if ($_taxvat->isEnabled()): ?>
-                                                    <?php echo $_taxvat->setTaxvat($this->getFormData()->getTaxvat())->toHtml() ?>
-                                                       
-                                                        <?php endif ?>
-                                                            <?php $_gender = $this->getLayout()->createBlock('customer/widget_gender') ?>
-                                                                <?php if ($_gender->isEnabled()): ?>
-                                                                    <?php echo $_gender->setGender($this->getFormData()->getGender())->toHtml() ?>
-                                                                        <?php endif ?>
-                                                                            <?php $_dob = $this->getLayout()->createBlock('customer/widget_dob') ?>
-                                                                                <?php if ($_dob->isEnabled()): ?>
-                                                                                   
-                                                                                        <?php endif ?>
-                                                                                         
-                                                                                                <input type="text" name="shipping_pickup_at_store_date" id="shipping_pickup_at_store_date"  placeholder="Date Of Birth" />
-                                                                                               
-                                                                                                <script type="text/javascript">
-                                                                                                    // <![CDATA[
-                                                                                                    Calendar.setup({
-                                                                                                        inputField: 'shipping_pickup_at_store_date',
-                                                                                                        ifFormat: '%m-%d-%Y',
-                                                                                                        showsTime: false,
-                                                                                                        button: 'shipping_pickup_at_store_date',
-                                                                                                        singleClick: true,
-                                                                                                        disableFunc: function(date) {
-                                                                                                            //disable previous day in datepicker
-                                                                                                            var now = new Date();
-                                                                                                            if (date.getFullYear() < now.getFullYear()) {
-                                                                                                                return true;
-                                                                                                            }
-                                                                                                            if (date.getFullYear() == now.getFullYear()) {
-                                                                                                                if (date.getMonth() < now.getMonth()) {
-                                                                                                                    return true;
-                                                                                                                }
-                                                                                                            }
-                                                                                                            if (date.getMonth() == now.getMonth()) {
-                                                                                                                if (date.getDate() < now.getDate()) {
-                                                                                                                    return true;
-                                                                                                                }
-                                                                                                            }
-                                                                                                        },
-                                                                                                    });
-                                                                                                    // ]]>
-                                                                                                </script>
+                                         </div>
 
-                                        </div>
+                                          <div class="small-12 large-6 columns"> 
+
+                                                <?php $_taxvat = $this->getLayout()->createBlock('customer/widget_taxvat') ?>
+                                                <?php if ($_taxvat->isEnabled()): ?>
+                                                <?php echo $_taxvat->setTaxvat($this->getFormData()->getTaxvat())->toHtml() ?> 
+                                                <?php endif ?>
+                                                <?php $_gender = $this->getLayout()->createBlock('customer/widget_gender') ?>
+                                                <?php if ($_gender->isEnabled()): ?>
+                                                <?php echo $_gender->setGender($this->getFormData()->getGender())->toHtml() ?>
+                                                <?php endif ?>
+                                          </div>
+
+                                           <div class="small-12 large-6 columns"> 
+                                                 <input type="text" onfocus="(this.type='date')"  name="shipping_pickup_at_store_date" id="shipping_pickup_at_store_date"  placeholder="Date of Birth (MM/DD/YYY) *" data-date-format="MM/DD/YYY" />
+                                           </div>
+
+                                            <div class="small-12 large-6 columns"> 
+                                                 <input type="number" autocapitalize="off" autocorrect="off" spellcheck="false" name="age" id="age" value="<?php echo $this->escapeHtml($this->getFormData()->getAge()) ?>" title="<?php echo $this->quoteEscape($this->__('Age')) ?>" placeholder="<?php echo $this->quoteEscape($this->__('Age*')) ?>" class="input-text required-entry" />
+                                           </div>
+                                             
+
+                                      
+                                            <div class="small-12 large-6 columns">
+                                            
+                                                 <input type="text" autocapitalize="off" autocorrect="off" spellcheck="false" name="weight" id="weight" value="<?php echo $this->escapeHtml($this->getFormData()->getWeight())?>" title="<?php echo $this->quoteEscape($this->__('Weight')) ?>" placeholder="<?php echo $this->quoteEscape($this->__('Weight (in KG)*')) ?>" class="input-text required-entry" />
+                                                          
+                                             </div>
+
+                                              <div class="small-12 large-6 columns"> 
+                                                <input type="number" autocapitalize="off" autocorrect="off" spellcheck="false" name="height" id="height" placeholder="<?php echo $this->quoteEscape($this->__('Height (in CM)*')) ?>" value="<?php echo $this->escapeHtml($this->getFormData()->getHeight()) ?>" title="<?php echo $this->quoteEscape($this->__('Height')) ?>" class="input-text required-entry" />
+                                            </div>
+
                                     </div>
+
                                      <div class="row">
                                      	 <div class="small-12 large-12 columns">
                                       
@@ -177,14 +162,21 @@
                                                         //]]>
                                                         </script>         
                                                             <input type="text" id="region" name="region" value="<?php echo $this->escapeHtml($this->getRegion()) ?>" title="<?php echo $this->quoteEscape($this->__('State/Province')) ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('region') ?>" style="display:none;"  placeholder="State"/>  
-                                                         <input type="text" name="postcode" value="<?php echo $this->escapeHtml($this->getFormData()->getPostcode()) ?>" title="<?php echo $this->quoteEscape($this->__('Zip/Postal Code')) ?>" id="zip" class="input-text validate-zip-international <?php echo $this->helper('customer/address')->getAttributeValidationClass('postcode') ?>" placeholder="Zip/Postal Code*"/> 
+                                                         
                                                      </div>
+
+                                                    <div class="small-12 large-6 columns">
+                                                        <input type="text" name="postcode" value="<?php echo $this->escapeHtml($this->getFormData()->getPostcode()) ?>" title="<?php echo $this->quoteEscape($this->__('Zip/Postal Code')) ?>" id="zip" class="input-text validate-zip-international <?php echo $this->helper('customer/address')->getAttributeValidationClass('postcode') ?>" placeholder="Postal Code*"/> 
+                                                    </div>
+
                                                      <div class="small-12 large-6 columns">
                                                    
                                                             <input type="password" name="password" id="password" title="<?php echo $this->quoteEscape($this->__('Password')) ?>" class="input-text required-entry validate-password" placeholder="Password*"/>
-                                                             <input type="password" name="confirmation" title="<?php echo $this->quoteEscape($this->__('Confirm Password')) ?>" id="confirmation" class="input-text required-entry validate-cpassword" placeholder="Confirm Password*" />
-                                                       
-                                                       
+                                                           
+                                                     </div>
+
+                                                      <div class="small-12 large-6 columns">
+                                                       <input type="password" name="confirmation" title="<?php echo $this->quoteEscape($this->__('Confirm Password')) ?>" id="confirmation" class="input-text required-entry validate-cpassword" placeholder="Confirm Password*" />
                                                      </div>
                                                                                     
                                              
@@ -250,19 +242,19 @@
              
              
 
-		var data =jQuery('#shipping_pickup_at_store_date').val();
-		var arr = data.split('-');
-		jQuery('#month').val(arr[0]);
-		jQuery('#day').val(arr[1]);
-		jQuery('#year').val(arr[2]);
-			jQuery('#shipping_pickup_at_store_date').change(function(){
-				var data =jQuery('#shipping_pickup_at_store_date').val();
-				var arr = data.split('-');
-				jQuery('#month').val(arr[0]);
-				jQuery('#day').val(arr[1]);
-				jQuery('#year').val(arr[2]);		
-			})	
-		});
+        var data =jQuery('#shipping_pickup_at_store_date').val();
+        var arr = data.split('/');
+        jQuery('#month').val(arr[1]);
+        jQuery('#day').val(arr[2]);
+        jQuery('#year').val(arr[0]);
+            jQuery('#shipping_pickup_at_store_date').change(function(){
+                var data =jQuery('#shipping_pickup_at_store_date').val();
+                var arr = data.split('-');
+                jQuery('#month').val(arr[1]);
+                jQuery('#day').val(arr[2]);
+                jQuery('#year').val(arr[0]);        
+            })  
+        });
 
 
 	</script>
@@ -276,7 +268,7 @@
         margin-top: 10px;
       }
         .account-create input,.account-create select {
-            margin: 15px 0;
+            margin: 17px 0;
             width: 100%;
             border: none;
             border-radius: 0px;
