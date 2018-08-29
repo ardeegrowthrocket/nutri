@@ -87,11 +87,10 @@ Customer account home dashboard layout
         </reference>    
         <!-- Mage_Customer -->
         <reference name="head">      
-        <action method="addItem"><type>skin_js</type><name>pdf/js/flipbook.min.js</name></action> 
-        <action method="removeItem"><type>skin_js</type><name>js/jquery.fancybox.min.js</name></action> 
+        <action method="addItem"><type>skin_js</type><name>pdfv2/js/flipbook.min.js</name></action> 
         
-        <action method="addItem"><type>skin_css</type><name>pdf/css/flipbook.style.css</name><params/></action>
-        <action method="addItem"><type>skin_css</type><name>pdf/css/font-awesome.css</name><params/></action>
+        <action method="addItem"><type>skin_css</type><name>pdfv2/css/flipbook.style.css</name><params/></action>
+        <action method="addItem"><type>skin_css</type><name>pdfv2/css/font-awesome.css</name><params/></action>
         </reference>
 
 
