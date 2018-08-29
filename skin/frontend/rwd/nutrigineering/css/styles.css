@@ -4458,7 +4458,7 @@ a.skip-link {
 }
 .footer .block-subscribe .input-box {
   float: left;
-  width: calc(100% - 102px);
+  width: 70%;
   padding-top: 0;
 }
 .footer .block-subscribe .input-text {
@@ -4498,6 +4498,7 @@ a.skip-link {
 	line-height: 17px;
 	float: left;
 	font-family: AvenirLTPro-Roman;
+	border-radius: 0;
 }
 .footer .bugs,
 .footer address {
