@@ -80,9 +80,8 @@
 		
 		<?php if(!$this->isCustomerLoggedIn()): ?>
 					<div class="field">
-						<label for="billing:email" class="required"><em>*</em><?php echo $this->__('Email Address') ?></label>
 						<div class="small-12 large-12 columns">
-							<input type="text" name="billing[email]" id="billing:email" value="<?php echo $this->escapeHtml($this->getAddress()->getEmail()) ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Email Address')) ?>" class="input-text validate-email required-entry" />
+							<input type="text" name="billing[email]" id="billing:email" value="<?php echo $this->escapeHtml($this->getAddress()->getEmail()) ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Email Address')) ?>" class="input-text validate-email required-entry" placeholder="Email Address*" />
 						</div>
 					</div>
 		<?php endif; ?>
@@ -116,7 +115,7 @@
 						</div>
 					</div>
 					<div class="field">
-						<label for="billing:region_id" class="required"><em>*</em><?php echo $this->__('State/Province') ?></label>
+						
 						<div class="small-12 large-12 columns">
 							<select id="billing:region_id" name="billing[region_id]" title="<?php echo Mage::helper('core')->quoteEscape($this->__('State/Province')) ?>" class="validate-select" style="display:none;">
 								<option value=""><?php echo $this->__('Please select region, state or province') ?></option>

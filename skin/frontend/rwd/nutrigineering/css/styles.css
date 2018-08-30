@@ -12603,3 +12603,8 @@ body.customer-account-login .wrapper,.customer-account-forgotpassword .wrapper{
 body.paypal-express-review h2 {
     text-transform: capitalize;
 }
+
+li#billing-new-address-form ul li {
+    width: 100%;
+    float: left;
+}
